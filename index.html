@@ -16,22 +16,23 @@
                 <div class="stats__scales">
                     <div class="stats__health">
                         <img class="stats__img" src="img/health.png" alt="health">
-                        <meter id="health__meter" value="50" min="0" max="100"></meter>
+                        <meter id="health__meter" value="100" min="0" max="100"></meter>
                     </div>
                     <div class="stats__happiness">
                         <img class="stats__img" src="img/happiness.png" alt="happiness">
-                        <meter id="happiness__meter" value="50" min="0" max="100"></meter>
+                        <meter id="happiness__meter" value="100" min="0" max="100"></meter>
                     </div>
                     <div class="stats__food">
                         <img class="stats__img" src="img/food.png" alt="food">
-                        <meter id="food__meter" value="50" min="0" max="100"></meter>
+                        <meter id="food__meter" value="100" min="0" max="100"></meter>
                     </div>
                 </div>
+                <div class="count__days"></div>
                 
                 <div class="stats__counts">
                     <div class="stats__balance">Balance:</div>
-                    <div class="stats__local-money">222 &#8372;</div>
-                    <div class="stats__dollars">222 $</div>
+                    <div id="stats__local-money" class="stats__local-money">0 &#8372;</div>
+                    <div id="stats__dollars" class="stats__dollars">0 $</div>
                 </div>  
             </div>
         </div>
@@ -39,37 +40,135 @@
         <div class="experience__container">
             <div class="exp__container">
                 <div class="person__level">Current level: 1</div>
-                <div class="need__exp">500/1000</div>
+                <div class="need__exp">0/1000</div>
             </div>
             <div>
-                <meter id="experience__meter" value="505" min="0" max="1000"></meter>       
+                <meter id="experience__meter" value="0" min="0" max="1000"></meter>       
             </div>
         </div>
     </header>
 
     <main>
-        <div class="character__container">
+        <div id="character__syka" class="character__container">
+            <div></div>
             <img class="character__img" src="img/poorstudent.png" alt="character">
+            <div class="bank" onclick="changeMenuDisplay('bank__menu')">
+                <h2>BANK</h1>
+            </div>
+        </div>
+        <div id="health__menu" class="no-display  menu__container">
+            <ul id="health__items__li">
+                <li><button onclick="healthItem(this)" class="workout_menu">Workout (+5&#10084;)</button></li>
+                <li><button onclick="healthItem(this)" class="pill_menu">Take a pill (+15&#10084;)</button></li>
+                <li><button onclick="healthItem(this)" class="doctor_menu">Go to the doctor (+25&#10084;, -1000&#8372)</button></li>
+                <li><button onclick="healthItem(this)" class="hospital_menu">Go to the private hospital(+50&#10084;, -4000&#8372)</button></li>
+                <li><button onclick="healthItem(this)" class="abroad_menu">Get treatment abroad(+100&#10084;, -4000$)</button></li>
+                <li><button onclick="healthItem(this)" class="personaldoctor_menu">Hire a personal doctor(+70&#10084; every month, -25000&#8372 every month)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                
+                
+            </ul>
+            <div class="exit" onclick="exitMenus(health__menu)">&#10062;</div>
+        </div>
+        <div id="happiness__menu" class="no-display menu__container">
+            <ul id="happiness__items__li">
+                <li><button onclick="happinessItem(this)" class="walk_menu">Go for a walk (+5&#128525;, -2&#127828)</button></li>
+                <li><button onclick="happinessItem(this)" class="sleep_menu">Sleep (+10&#128525;, -5&#127828)</button></li>
+                <li><button onclick="happinessItem(this)" class="cake_menu">Eat some cake (+20&#128525;,+10&#127828;, -100&#8372)</button></li>
+                <li><button onclick="happinessItem(this)" class="marry_menu">Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+            </ul>
+            <div class="exit" onclick="exitMenus(happiness__menu)">&#10062;</div>
+        </div>
+        <div id="food__menu" class="no-display menu__container">
+            <ul id="food__items__li">
+                <li><button onclick="foodItem(this)" class="meal_menu">Meal(+20&#127828)</button></li>
+                <li><button onclick="foodItem(this)" class="fastfood_menu">Fast food(+30&#127828, -300&#8372)</button></li>
+                <li><button onclick="foodItem(this)" class="restaurant_menu">Restaurant(+40&#127828, -1000&#8372)</button></li>
+                <li><button onclick="foodItem(this)" class="marry_menu">Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)</button></li>
+                <li><button onclick="foodItem(this)" class="personalchef_menu">Hire a personal chef(+100&#127828 every month, -20000&#8372)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+            </ul> 
+            <div class="exit" onclick="exitMenus(food__menu)">&#10062;</div> 
+        </div>
+        <div id="work__menu" class="no-display menu__container">
+            <ul id="work__items__li">
+                <li><button onclick="workItem(this)" class="constructionsite_menu">Work on a construction site(+7000&#8372 every month)</button></li>
+                <li><button onclick="workItem(this)" class="courier_menu">Work as a courier(+12000&#8372 every month)</button></li>
+                <li><button onclick="workItem(this)" class="waiter_menu">Work as a waiter(+17000&#8372 every month)</button></li>
+                <li><button onclick="workItem(this)" class="trainee_menu">Trainee(+1000$ every month, + 2000exp every month)</button></li>
+                <li><button onclick="workItem(this)" class="junior_menu">Junior(+1500$ every month, + 4000exp every month)</button></li>
+                <li><button onclick="workItem(this)" class="middle_menu">Middle(+2500$ every month, + 6000exp every month)</button></li>
+                <li><button onclick="workItem(this)" class="senior_menu">Senior(+5000$ every month, + 8000exp every month)</button></li>
+                <li><button onclick="workItem(this)" class="teamlead_menu">TeamLead(+10000$ every month, + 10000exp every month)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+            </ul>
+            <div class="exit" onclick="exitMenus(work__menu)">&#10062;</div>
+        </div>
+        <div id="study__menu" class="no-display menu__container">
+            <ul id="study__items__li">
+                <li><button onclick="studyItem(this)" class="book_menu">Read a book(+300exp)</button></li>
+                <li><button onclick="studyItem(this)" class="courses_menu">Buy courses(+1500exp, -7000&#8372, 90 days)</button></li>
+                <li><button onclick="studyItem(this)" class="university_menu">University(+5000exp, 1095 days)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+                <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
+            </ul>
+            <div class="exit" onclick="exitMenus(study__menu)">&#10062;</div>
+        </div>
+        <div id="bank__menu" class="no-display menu__container">
+            <div>
+                <form onsubmit="return exchangeFormHandler(event)">
+                    <p id="buy__usd"></p>
+                    <input type="hidden" name="currency" value="UAH">
+                    <input name="sum" type="number">
+                    <input type="submit">
+                </form>
+                <form onsubmit="return exchangeFormHandler(event)">
+                    <p id="sell__usd"></p>
+                    <input type="hidden" name="currency" value="USD">
+                    <input name="sum" type="number">
+                    <input type="submit">
+                </form>
+            </div>
+            <div class="exit" onclick="exitMenus(bank__menu)">&#10062;</div>
         </div>
     </main>
     <footer>
-        <div class="action__container"> 
+        <div id="action__health" class="action__container" onclick="changeMenuDisplay('health__menu')"> 
             <img class="action__img" src="img/health.png" alt="health">
             Health
         </div>
-        <div class="action__container">
+        <div id="action__happiness" class="action__container" onclick="changeMenuDisplay('happiness__menu')">
             <img class="action__img" src="img/happiness.png" alt="happiness">
             Happiness
         </div>
-        <div class="action__container"> 
+        <div id="action__food" class="action__container" onclick="changeMenuDisplay('food__menu')"> 
             <img class="action__img" src="img/food.png" alt="food">
             Food
         </div>
-        <div class="action__container"> 
+        <div id="action__work" class="action__container" onclick="changeMenuDisplay('work__menu')"> 
             <img class="action__img" src="img/work.png" alt="work">
             Work
         </div>
-        <div class="action__container">
+        <div id="action__study" class="action__container" onclick="changeMenuDisplay('study__menu')">
             <img class="action__img" src="img/study.png" alt="study">
             Study
         </div>

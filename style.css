@@ -27,6 +27,8 @@ main {
     height: 510px;
     margin: auto;
     padding: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 footer {
@@ -57,8 +59,10 @@ footer {
 }
 
 .character__container {
-    width: fit-content;
+    width: 100%;
     margin: auto;
+    display: flex;
+    justify-content: space-between;
 }
 
 .character__img {
@@ -160,12 +164,12 @@ footer {
     width: 90%;
     height: 50px;
   }
-  
+
   #health__meter::-webkit-meter-bar {
     background-color: white;
     border: none;
   }
-  
+
   #health__meter::-webkit-meter-optimum-value {
     background-color: red;}
       
@@ -173,7 +177,7 @@ footer {
     background-color: white;
     border: none;
     }
-      
+
 #food__meter::-webkit-meter-optimum-value {
     background-color: green;}
 
@@ -181,9 +185,9 @@ footer {
     background-color: white;
     border: none;
     }
-          
+
 #happiness__meter::-webkit-meter-optimum-value {
-    background-color: yellow;}     
+    background-color: yellow;}
 
 .stats__balance{
     font-size: large;
@@ -195,4 +199,121 @@ footer {
     border-top: 3px dashed black;
     margin-top: 0px;
     margin-bottom: 10px;
+}
+
+.no-display {
+    display: none;
+}
+
+.menu__container {
+    width: 95%;
+    height: 95%;
+    backdrop-filter: blur(15px);
+    border-radius: 5%;
+    padding: 10px;
+    border:  2px #333 solid;
+}
+
+.menu__container > ul {
+    padding: 0;
+    margin: 1%;
+    margin-bottom: -5px;
+}
+
+.menu__container > ul > li {
+    background-color: #007BFF;
+    margin: 3px;
+    list-style-type: none;
+    border-radius: 15px;
+}
+.count__days{
+    font-size: large;
+    color: #333;
+    margin-top: 10px;
+    font-weight: bold;
+}
+#health__items__li li button , 
+#happiness__items__li li button, 
+#food__items__li li button, 
+#work__items__li li button, 
+#study__items__li li button {
+    background-color: #007BFF;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 98%;
+}
+
+#health__items__li li button:hover, #happiness__items__li li button:hover, #food__items__li li button:hover, #work__items__li li button:hover, #study__items__li li button:hover {
+    background-color: #0056b3;
+}
+
+#health__items__li li button:active, #happiness__items__li li button:active, #food__items__li li button:active, #work__items__li li button:active, #study__items__li li button:active {
+    background-color: #004299;
+}
+.exit{
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    cursor: pointer;
+    font-size: 34px;
+}
+
+
+#study__items__li, 
+#work__items__li, 
+#food__items__li, 
+#health__items__li, 
+#happiness__items__li {
+    max-height: 95%;
+    overflow: auto;
+}
+
+#study__items__li::-webkit-scrollbar,
+#work__items__li::-webkit-scrollbar,
+#food__items__li::-webkit-scrollbar,
+#health__items__li::-webkit-scrollbar,
+#happiness__items__li::-webkit-scrollbar {
+    width: 12px;
+}
+
+#study__items__li::-webkit-scrollbar-thumb,
+#work__items__li::-webkit-scrollbar-thumb,
+#food__items__li::-webkit-scrollbar-thumb,
+#health__items__li::-webkit-scrollbar-thumb,
+#happiness__items__li::-webkit-scrollbar-thumb {
+    background-color: #007BFF;
+    border-radius: 6px;
+}
+
+#study__items__li::-webkit-scrollbar-track,
+#work__items__li::-webkit-scrollbar-track,
+#food__items__li::-webkit-scrollbar-track,
+#health__items__li::-webkit-scrollbar-track,
+#happiness__items__li::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 6px;
+}
+
+.bank {
+    align-self: center;
+    background-color: green;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    border-radius: 15%;
+}
+
+#buy__usd,
+#sell__usd {
+    background-color: #f1f1f1;
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
 }
