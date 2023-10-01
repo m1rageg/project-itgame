@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>IT game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header__container">
+            <div class="stats">
+                <div class="stats__scales">
+                    <div class="stats__health">
+                        <img class="stats__img" src="img/health.png" alt="health">
+                        <meter id="health__meter" value="50" min="0" max="100"></meter>
+                    </div>
+                    <div class="stats__happiness">
+                        <img class="stats__img" src="img/happiness.png" alt="happiness">
+                        <meter id="happiness__meter" value="50" min="0" max="100"></meter>
+                    </div>
+                    <div class="stats__food">
+                        <img class="stats__img" src="img/food.png" alt="food">
+                        <meter id="food__meter" value="50" min="0" max="100"></meter>
+                    </div>
+                </div>
+                
+                <div class="stats__counts">
+                    <div class="stats__balance">Balance:</div>
+                    <div class="stats__local-money">222 &#8372;</div>
+                    <div class="stats__dollars">222 $</div>
+                </div>  
+            </div>
+        </div>
+        <div class="stats-divider"></div>
+        <div class="experience__container">
+            <div class="exp__container">
+                <div class="person__level">Current level: 1</div>
+                <div class="need__exp">500/1000</div>
+            </div>
+            <div>
+                <meter id="experience__meter" value="505" min="0" max="1000"></meter>       
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="character__container">
+            <img class="character__img" src="img/poorstudent.png" alt="character">
+        </div>
+    </main>
+    <footer>
+        <div class="action__container"> 
+            <img class="action__img" src="img/health.png" alt="health">
+            Health
+        </div>
+        <div class="action__container">
+            <img class="action__img" src="img/happiness.png" alt="happiness">
+            Happiness
+        </div>
+        <div class="action__container"> 
+            <img class="action__img" src="img/food.png" alt="food">
+            Food
+        </div>
+        <div class="action__container"> 
+            <img class="action__img" src="img/work.png" alt="work">
+            Work
+        </div>
+        <div class="action__container">
+            <img class="action__img" src="img/study.png" alt="study">
+            Study
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

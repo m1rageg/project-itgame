@@ -1,0 +1,198 @@
+body {
+    font-family: 'Young Serif', sans-serif;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+    
+header {
+    background-color: rgb(14, 170, 110);
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    height: 175px;
+}
+main {
+    background-image: url(img/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 40%;
+    height: 510px;
+    margin: auto;
+    padding: 30px;
+}
+
+footer {
+    background-color: rgb(14, 170, 110);
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    margin: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    justify-content: space-between;
+}
+
+.action__container {
+    font-size: large;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    width: 15%;
+}
+
+.action__img {
+    width: 89%;
+    background-color: #333;
+    padding: 5px;
+    border-radius: 15%;
+}
+
+.character__container {
+    width: fit-content;
+    margin: auto;
+}
+
+.character__img {
+    margin: auto;
+    width: 470px;
+    height: 700px;
+}
+
+
+.header__container {
+    display: flex;
+}
+
+.stats {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stats__scales {
+    width: 50%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 0px;
+}
+
+.stats__counts {
+    display: flex;
+    flex-direction: column;
+}
+
+.stats__health, .stats__happiness, .stats__food {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    border-radius: 15%;
+    width: 30%;
+    height: 80%;
+    padding: 10px;
+    padding-bottom: 0px;
+    margin: 10px;
+}
+
+.stats__img {
+    width: 40%;
+    height: 40%;
+    background: none;
+}
+
+  .exp__container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 15px;
+  }
+  .need__exp{
+    font-size: large;
+    color: #333;
+    font-weight: bold;
+  }
+  .person__level {
+    font-size: large;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  #experience__meter {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(14, 170, 110);
+    display: block;
+  }
+  
+  #experience__meter::-webkit-meter-bar {
+    background-color: white;
+    border: none;
+  }
+  
+  #experience__meter::-webkit-meter-optimum-value {
+    background-color: black;
+  }
+.stats__local-money{
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    text-align: right;
+}
+.stats__dollars{
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: right; 
+}
+#health__meter, #happiness__meter, #food__meter {
+    width: 90%;
+    height: 50px;
+  }
+  
+  #health__meter::-webkit-meter-bar {
+    background-color: white;
+    border: none;
+  }
+  
+  #health__meter::-webkit-meter-optimum-value {
+    background-color: red;}
+      
+#food__meter::-webkit-meter-bar {
+    background-color: white;
+    border: none;
+    }
+      
+#food__meter::-webkit-meter-optimum-value {
+    background-color: green;}
+
+#happiness__meter::-webkit-meter-bar {
+    background-color: white;
+    border: none;
+    }
+          
+#happiness__meter::-webkit-meter-optimum-value {
+    background-color: yellow;}     
+
+.stats__balance{
+    font-size: large;
+    color: #333;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.stats-divider {
+    border-top: 3px dashed black;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
