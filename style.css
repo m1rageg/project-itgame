@@ -301,11 +301,17 @@ footer {
 
 .bank {
     align-self: center;
-    background-color: green;
+    background-color: rgb(14, 170, 110);
     height: 100px;
     width: 100px;
+    border-radius: 55px;
+    margin-bottom: 700px;
+}
+.bank__text{
     text-align: center;
-    border-radius: 15%;
+    margin-top: 32px;
+    color: #333;
+    
 }
 
 #buy__usd,

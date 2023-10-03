@@ -52,16 +52,17 @@
         <div id="character__syka" class="character__container">
             <div></div>
             <img class="character__img" src="img/poorstudent.png" alt="character">
+            <!-- <div class="name">Name</div> -->
             <div class="bank" onclick="changeMenuDisplay('bank__menu')">
-                <h2>BANK</h1>
+                <h2 class="bank__text">BANK</h1>
             </div>
         </div>
         <div id="health__menu" class="no-display  menu__container">
             <ul id="health__items__li">
-                <li><button onclick="healthItem(this)" class="workout_menu">Workout (+5&#10084;)</button></li>
-                <li><button onclick="healthItem(this)" class="pill_menu">Take a pill (+15&#10084;)</button></li>
-                <li><button onclick="healthItem(this)" class="doctor_menu">Go to the doctor (+25&#10084;, -1000&#8372)</button></li>
-                <li><button onclick="healthItem(this)" class="hospital_menu">Go to the private hospital(+50&#10084;, -4000&#8372)</button></li>
+                <li><button onclick="healthItem(this)" class="workout_menu">Workout (+5&#10084;, -3&#127828)</button></li>
+                <li><button onclick="healthItem(this)" class="pill_menu">Take a pill (+15&#10084;, -5&#128525;)</button></li>
+                <li><button onclick="healthItem(this)" class="doctor_menu">Go to the doctor (+25&#10084;, -5&#127828;, -1000&#8372)</button></li>
+                <li><button onclick="healthItem(this)" class="hospital_menu">Go to the private hospital(+50&#10084;, -15&#127828, -4000&#8372)</button></li>
                 <li><button onclick="healthItem(this)" class="abroad_menu">Get treatment abroad(+100&#10084;, -4000$)</button></li>
                 <li><button onclick="healthItem(this)" class="personaldoctor_menu">Hire a personal doctor(+70&#10084; every month, -25000&#8372 every month)</button></li>
                 <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
@@ -90,8 +91,8 @@
         </div>
         <div id="food__menu" class="no-display menu__container">
             <ul id="food__items__li">
-                <li><button onclick="foodItem(this)" class="meal_menu">Meal(+20&#127828)</button></li>
-                <li><button onclick="foodItem(this)" class="fastfood_menu">Fast food(+30&#127828, -300&#8372)</button></li>
+                <li><button onclick="foodItem(this)" class="meal_menu">Meal(+20&#127828, -5&#128525)</button></li>
+                <li><button onclick="foodItem(this)" class="fastfood_menu">Fast food(+30&#127828,-10&#10084, -300&#8372)</button></li>
                 <li><button onclick="foodItem(this)" class="restaurant_menu">Restaurant(+40&#127828, -1000&#8372)</button></li>
                 <li><button onclick="foodItem(this)" class="marry_menu">Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)</button></li>
                 <li><button onclick="foodItem(this)" class="personalchef_menu">Hire a personal chef(+100&#127828 every month, -20000&#8372)</button></li>
@@ -121,7 +122,7 @@
         <div id="study__menu" class="no-display menu__container">
             <ul id="study__items__li">
                 <li><button onclick="studyItem(this)" class="book_menu">Read a book(+300exp)</button></li>
-                <li><button onclick="studyItem(this)" class="courses_menu">Buy courses(+1500exp, -7000&#8372, 90 days)</button></li>
+                <li><button onclick="studyItem(this)" class="course_menu">Buy courses(+1500exp, -7000&#8372, 90 days)</button></li>
                 <li><button onclick="studyItem(this)" class="university_menu">University(+5000exp, 1095 days)</button></li>
                 <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
                 <li><button class="button_menu">Closed :c (probably will be open soon...)</button></li>
