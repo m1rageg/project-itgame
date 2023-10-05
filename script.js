@@ -1,3 +1,4 @@
+//Javascript не використовується
 class MainHero{
     constructor(name,){
         this.name = name;
@@ -8,17 +9,38 @@ class MainHero{
         this.usd = 0
         this.uah = 0
     }
+    addHealth(value){
+        this.health += value
+        if (this.health > 100){
+            this.health = 100
+        }
+    }
+    addHappiness(value){
+        this.happiness += value
+        if (this.happiness > 100){
+            this.happiness = 100
+        }
+    }
+    addFood(value){
+        this.food += value
+        if (this.food > 100){
+            this.food = 100
+        }
+    }
 }
 
 let tempDaysCourse = 0
 let tempDaysUniversity = 0
+let tempDaysBook = 0
+let timeoutTimer = 100
 
 let arrayStudyItems = [
     {
         name: "book",
         price: 0,
         exp: 300,
-        days: 0,
+        days: 10,
+        isBought: false
         
     },
     {
@@ -83,12 +105,12 @@ function setBar (id, value) {
     bar.value = value
 }
 
+const personLevel = document.querySelector(".person__level")
 
 let currentLevel = 1
 let currentExp = 0
 let needExp = 1000
 function renderExp(countExp){
-    const personLevel = document.querySelector(".person__level")
     const needExpDisplay = document.querySelector(".need__exp")
     let tempExp = currentExp + countExp
     while (tempExp >= 1000) {
@@ -166,34 +188,43 @@ function increaseGameDate() {
     // rocketLeague.happiness -= 4
     // rocketLeague.health -= 1.5
     if(countDays % 30 === 0 && arrayHappinessItems[3].isMarried === true){
-        rocketLeague.happiness += arrayHappinessItems[3].buffHappiness
-        rocketLeague.food += arrayHappinessItems[3].buffFood
+        rocketLeague.addHappiness(arrayHappinessItems[3].buffHappiness)
+        rocketLeague.addFood(arrayHappinessItems[3].buffFood)
         rocketLeague.uah -= arrayHappinessItems[3].price
-        displayHeroStats(rocketLeague)
     }
     if(countDays % 30 === 0 && arrayHealthItems[5].isHired === true){
-        rocketLeague.health += arrayHealthItems[5].buffHealth
+        rocketLeague.addHealth(arrayHealthItems[5].buffHealth)
         rocketLeague.uah -= arrayHealthItems[5].price
-        displayHeroStats(rocketLeague)
     }
     if(countDays % 30 === 0 && arrayFoodItems[3].isHired === true){
-        rocketLeague.food += arrayFoodItems[3].buffFood
+        rocketLeague.addFood(arrayFoodItems[3].buffFood)
         rocketLeague.uah -= arrayFoodItems[3].price
-        displayHeroStats(rocketLeague)
     }
     if (arrayStudyItems[1].isBought === true && tempDaysCourse === countDays){
         renderExp(arrayStudyItems[1].exp);
-        displayHeroStats(rocketLeague)
         arrayStudyItems[1].isBought = false
+        document.querySelector(".course_menu").setAttribute("onclick", "studyItem(this)")
+        document.querySelector(".course_menu").innerHTML = "Buy courses(+1500exp, -7000&#8372, 90 days)"
+        
     }
     if (arrayStudyItems[2].isBought === true && tempDaysUniversity === countDays){
         renderExp(arrayStudyItems[2].exp);
-        displayHeroStats(rocketLeague)
         arrayStudyItems[2].isBought = false
+        document.querySelector(".university_menu").setAttribute("onclick", "studyItem(this)")
+        document.querySelector(".course_menu").innerHTML = "University(+5000exp, 1095 days)"
     }
+    if (arrayStudyItems[0].isBought === true && tempDaysBook === countDays){
+        renderExp(arrayStudyItems[0].exp);
+        arrayStudyItems[0].isBought = false
+        document.querySelector(".book_menu").setAttribute("onclick", "studyItem(this)")
+        document.querySelector(".book_menu").innerHTML = "Read book(+300exp, 10 days)"
+        
+    }
+    personLevel.innerHTML = `Current level: ${currentLevel}`
+
 
     displayHeroStats(rocketLeague)
-    setTimeout(increaseGameDate, 100)
+    setTimeout(increaseGameDate, timeoutTimer)
 }
 increaseGameDate()
 //end function for changing date
@@ -242,6 +273,7 @@ function completeExchange (value, currency, person) {
     }
 }
 
+// function to handle exchange forms
 function exchangeFormHandler (event) {
     event.preventDefault();
     const form = event.target;
@@ -317,25 +349,25 @@ function happinessItem(button){
     const buttonClass = button.classList[0];
     switch (buttonClass) {
         case 'sleep_menu':
-            rocketLeague.happiness += arrayHappinessItems[1].buffHappiness
-            rocketLeague.food += arrayHappinessItems[1].buffFood
+            rocketLeague.addHappiness(arrayHappinessItems[1].buffHappiness)
+            rocketLeague.addFood(arrayHappinessItems[1].buffFood)
             displayHeroStats(rocketLeague)
             break;
         case 'walk_menu':
-            rocketLeague.happiness += arrayHappinessItems[0].buffHappiness
-            rocketLeague.food += arrayHappinessItems[0].buffFood
+            rocketLeague.addHappiness(arrayHappinessItems[0].buffHappiness)
+            rocketLeague.addFood(arrayHappinessItems[0].buffFood)
             displayHeroStats(rocketLeague)  
             break;
         case 'cake_menu':
-            rocketLeague.happiness += arrayHappinessItems[2].buffHappiness
-            rocketLeague.food += arrayHappinessItems[2].buffFood
+            rocketLeague.addHappiness(arrayHappinessItems[2].buffHappiness)
+            rocketLeague.addFood(arrayHappinessItems[2].buffFood)
             rocketLeague.uah -= arrayHappinessItems[2].price
             displayHeroStats(rocketLeague)
             break;
         case 'marry_menu':
             button.innerHTML = arrayHappinessItems[3].isMarried === false ? "You are already married!"  : "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)"
-            arrayHappinessItems[3].isMarried = arrayHappinessItems[3].isMarried === false? true : false
-            arrayFoodItems[4].isMarried = arrayFoodItems[4].isMarried === false? true : false
+            arrayHappinessItems[3].isMarried = arrayHappinessItems[3].isMarried === false ? true : false
+            arrayFoodItems[4].isMarried = arrayFoodItems[4].isMarried === false ? true : false
             if(arrayHappinessItems[3].isMarried === true || arrayFoodItems[4].isMarried === true){
                 let temp = document.querySelectorAll(".marry_menu")
                 temp.forEach((elem) => elem.innerHTML = "You are already married!")
@@ -349,14 +381,14 @@ function happinessItem(button){
         }
 }
 
-function updateMarryButton() {
-    let temp = document.querySelectorAll('marry_menu')
-    if(arrayHappinessItems[3].isMarried === false && arrayHealthItems[4].isMarried === false){  
-        temp.innerHTML = "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)"
-    } else if(arrayHappinessItems[3].isMarried === true || arrayHealthItems[4].isMarried === true){
-        temp.innerHTML = "You are already married!"
-    }
-}
+// function updateMarryButton() {
+//     let temp = document.querySelectorAll('marry_menu')
+//     if(arrayHappinessItems[3].isMarried === false && arrayHealthItems[4].isMarried === false){  
+//         temp.innerHTML = "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)"
+//     } else if(arrayHappinessItems[3].isMarried === true || arrayHealthItems[4].isMarried === true){
+//         temp.innerHTML = "You are already married!"
+//     }
+// }
 
 let arrayHealthItems = [
     {
@@ -416,29 +448,29 @@ function healthItem(button){
     const buttonClass = button.classList[0];
     switch (buttonClass) {
         case 'workout_menu':
-            rocketLeague.health += arrayHealthItems[0].buffHealth
-            rocketLeague.food += arrayHealthItems[0].buffFood
+            rocketLeague.addHealth(arrayHealthItems[0].buffHealth)
+            rocketLeague.addFood(arrayHealthItems[0].buffFood)
             displayHeroStats(rocketLeague)
             break;
         case 'pill_menu':
-            rocketLeague.health += arrayHealthItems[1].buffHealth
-            rocketLeague.happiness += arrayHealthItems[1].buffHappiness
+            rocketLeague.addHealth(arrayHealthItems[1].buffHealth)
+            rocketLeague.addHappiness(arrayHealthItems[1].buffHappiness)
             displayHeroStats(rocketLeague)
             break;
         case 'doctor_menu':
-            rocketLeague.health += arrayHealthItems[2].buffHealth
-            rocketLeague.food += arrayHealthItems[2].buffHappiness
+            rocketLeague.addHealth(arrayHealthItems[2].buffHealth)
+            rocketLeague.addHappiness(arrayHealthItems[2].buffHappiness)
             rocketLeague.uah -= arrayHealthItems[2].price
             displayHeroStats(rocketLeague)
             break;
         case 'hospital_menu':
-            rocketLeague.health += arrayHealthItems[3].buffHealth
-            rocketLeague.food += arrayHealthItems[3].buffFood
+            rocketLeague.addHealth(arrayHealthItems[3].buffHealth)
+            rocketLeague.addFood(arrayHealthItems[3].buffFood)
             rocketLeague.uah -= arrayHealthItems[3].price
             displayHeroStats(rocketLeague)
             break;
         case 'abroad_menu':
-            rocketLeague.health += arrayHealthItems[4].buffHealth
+            rocketLeague.addHealth(arrayHealthItems[4].buffHealth)
             rocketLeague.usd -= arrayHealthItems[4].price
             displayHeroStats(rocketLeague)
             break;
@@ -501,19 +533,19 @@ function foodItem(button){
     const buttonClass = button.classList[0];
     switch (buttonClass) {
         case 'meal_menu':
-            rocketLeague.happiness += arrayFoodItems[0].buffHappiness
-            rocketLeague.food += arrayFoodItems[0].buffFood
+            rocketLeague.addFood(arrayFoodItems[0].buffFood)
+            rocketLeague.addHappiness(arrayFoodItems[0].buffHappiness)
             displayHeroStats(rocketLeague)
             break;
         case 'fastfood_menu':
+            rocketLeague.addHealth(arrayFoodItems[1].buffHealth)
+            rocketLeague.addFood(arrayFoodItems[1].buffFood)
             rocketLeague.uah -= arrayFoodItems[1].price
-            rocketLeague.health += arrayFoodItems[1].buffHealth
-            rocketLeague.food += arrayFoodItems[1].buffFood
             displayHeroStats(rocketLeague)
             break;
         case 'restaurant_menu':
+            rocketLeague.addFood(arrayFoodItems[2].buffFood)
             rocketLeague.uah -= arrayFoodItems[2].price
-            rocketLeague.food += arrayFoodItems[2].buffFood
             displayHeroStats(rocketLeague)
             break;
         case 'personalchef_menu':
@@ -543,22 +575,164 @@ function studyItem(button){
     const buttonClass = button.classList[0];
     switch (buttonClass) {
         case "book_menu":
-            rocketLeague.exp += arrayStudyItems[0].exp
+            arrayStudyItems[0].isBought = arrayStudyItems[0].isBought === false ? true : false
+            tempDaysBook = countDays + arrayStudyItems[0].days
+            button.setAttribute("onclick", null)
+            decrementTimer(".book_menu", arrayStudyItems[0].days)
             break
         case "course_menu":
             arrayStudyItems[1].isBought = arrayStudyItems[1].isBought === false ? true : false
             rocketLeague.uah -= arrayStudyItems[1].price;
             tempDaysCourse = countDays + arrayStudyItems[1].days
+            button.setAttribute("onclick", null)
+            decrementTimer(".course_menu", arrayStudyItems[1].days)
+            
+            console.log("clicked")
             break
         case "university_menu":
             arrayStudyItems[2].isBought = arrayStudyItems[2].isBought === false ? true : false
             tempDaysUniversity = countDays + arrayStudyItems[2].days
+            button.setAttribute("onclick", null)
+            decrementTimer(".university_menu", arrayStudyItems[2].days)
             break
         default:
             break
     }
 }
 
+function decrementTimer(buttonName, days) {
+    days -= 1;
+    document.querySelector(buttonName).innerHTML = `Already studying, days left: ${days}`;
+    if (days > 0) {
+        setTimeout(() => decrementTimer(buttonName, days), timeoutTimer);
+    }
+}
+
+arrayWorkItems = [
+    {
+        name: ".constructionsite_menu",
+        salary: "7000",
+        currency: "uah",
+        exp: 0,
+        isWorking: false,
+        needLvl: 0,
+        description: "Work on a construction site(+7000&#8372 every month)",
+        ifWorking: "You are already working on a construction site."
+    },
+    {
+        name: ".courier_menu",
+        salary: "12000",
+        currency: "uah",
+        exp: 0,
+        isWorking: false,
+        needLvl: 5,
+        description: "Work as a courier(+12000&#8372 every month)",
+        ifWorking: ""
+    },
+    {
+        name: ".waiter_menu",
+        salary: "17000",
+        currency: "uah",
+        exp: 0,
+        isWorking: false,
+        needLvl: 13,
+        description: "Work as a waiter(+17000&#8372 every month)",
+        ifWorking: ""
+    },
+    {
+        name: ".trainee_menu",
+        salary: "1000",
+        currency: "usd",
+        exp: 2000,
+        isWorking: false,
+        needLvl: 20,
+        description: "Trainee(+1000$ every month, + 2000exp every month)",
+        ifWorking: ""
+    },
+    {
+        name: ".junior_menu",
+        salary: "1500",
+        currency: "usd",
+        exp: 4000,
+        isWorking: false,
+        needLvl: 40,
+        description: "Junior(+1500$ every month, + 4000exp every month)",
+        ifWorking: ""
+    },
+    {
+        name: ".middle_menu",
+        salary: "2500",
+        currency: "usd",
+        exp: 6000,
+        isWorking: false,
+        needLvl: 60,
+        description: "Middle(+2500$ every month, + 6000exp every month)",
+        ifWorking: ""
+    },
+    {
+        name: ".senior_menu",
+        salary: "5000",
+        currency: "usd",
+        exp: 8000,
+        isWorking: false,
+        needLvl: 80,
+        description: "Senior(+5000$ every month, + 8000exp every month)",
+        ifWorking: ""
+    },
+    {
+        name: ".teamlead_menu",
+        salary: "10000",
+        currency: "usd",
+        exp: 10000,
+        isWorking: false,
+        needLvl: 100,
+        description: "TeamLead(+10000$ every month, + 10000exp every month)",
+        ifWorking: ""
+    }
+]
+
+for (let i = 1; i < arrayWorkItems.length; i++) {
+    arrayWorkItems[i].ifWorking = `You are already working as a ${arrayWorkItems[i].name.split("_")[0].replace(".", " ")}.`;
+}
+
+function isEnoughLvlToWork(targetLvl){
+    if (currentLevel >= targetLvl){
+        return true
+    }
+    return false
+}
+
+function switchJobState(job) {
+    if (job.isWorking) {
+        const jobContainer = document.querySelector(job.name)
+        jobContainer.innerHTML = job.description
+        job.isWorking = false
+    } else {
+        const jobContainer = document.querySelector(job.name)
+        jobContainer.innerHTML = job.ifWorking
+        job.isWorking = true
+    }
+}
+
+function changeWork(workClass){
+    arrayWorkItems.forEach((job) => {
+        if (job.name === workClass && isEnoughLvlToWork(job.needLvl)) {
+            switchJobState(job)
+            arrayWorkItems.forEach((job) => {
+                const jobContainer = document.querySelector(job.name)
+                if (job.name !== workClass) {
+                    if (job.isWorking === true) {
+                        jobContainer.innerHTML = job.description
+                        job.isWorking = false
+                    }
+                }
+            })
+        }
+    })
+}
 
 
-function workItem(button){}
+function workItem(button){
+    const buttonClass = button.classList[0];
+    changeWork(`.${buttonClass}`)
+}

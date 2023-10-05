@@ -299,19 +299,52 @@ footer {
     border-radius: 6px;
 }
 
-.bank {
-    align-self: center;
-    background-color: rgb(14, 170, 110);
-    height: 100px;
-    width: 100px;
-    border-radius: 55px;
+.bank__button {
+    align-self: self-start;
+    background-image: url(img/bank.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 120px;
+    width: 120px;
     margin-bottom: 700px;
 }
-.bank__text{
+
+.bank_exchange__container {
+    margin: auto;
+    margin-top: 80px;
+    width: fit-content;
+}
+
+.bank__text, .casino__text{
     text-align: center;
-    margin-top: 32px;
-    color: #333;
-    
+    margin-top: 50px;
+    color: #22b943;
+    backdrop-filter: blur(2px);
+    font-size: 30px;
+    text-shadow: 1px 1px 0 #000,
+    -1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000,
+    0px 1px 0 #000,
+    0px -1px 0 #000,
+    -1px 0px 0 #000,
+    1px 0px 0 #000,
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    0px 2px 0 #000,
+    0px -2px 0 #000,
+    -2px 0px 0 #000,
+    2px 0px 0 #000,
+    1px 2px 0 #000,
+    -1px 2px 0 #000,
+    1px -2px 0 #000,
+    -1px -2px 0 #000,
+    2px 1px 0 #000,
+    -2px 1px 0 #000,
+    2px -1px 0 #000,
+    -2px -1px 0 #000;
 }
 
 #buy__usd,
@@ -322,4 +355,18 @@ footer {
     padding: 5px;
     text-align: center;
     border-radius: 5px;
+}
+
+.casino__button{
+    align-self: self-start;
+    background-image: url(img/casino.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 150px;
+    width: 150px;
+    margin-bottom: 700px;
+}
+
+.casino__text {
+    color: red;
 }
