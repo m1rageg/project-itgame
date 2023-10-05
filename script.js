@@ -736,30 +736,3 @@ function workItem(button){
     const buttonClass = button.classList[0];
     changeWork(`.${buttonClass}`)
 }
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-// TEST GITHUB
-//test number2
-//test number2
-//test number2
-//test number2
-//test number2
-//test number2
-//test number2
-//test number2
