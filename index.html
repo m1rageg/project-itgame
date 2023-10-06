@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>IT game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
@@ -51,11 +52,11 @@
     <main>
         <div id="character__syka" class="character__container">
             <div class="casino__button" onclick="changeMenuDisplay('casino__menu')">
-                <h2 class="casino__text">CASINO</h1>
+                <h2 class="casino__text">CASINO</h2>
             </div>
             <img class="character__img" src="img/poorstudent.png" alt="character">
             <div class="bank__button" onclick="changeMenuDisplay('bank__menu')">
-                <h2 class="bank__text">BANK</h1>
+                <h2 class="bank__text">BANK</h2>
             </div>
         </div>
         <div id="health__menu" class="no-display  menu__container">
@@ -153,7 +154,17 @@
             <div class="exit" onclick="exitMenus(bank__menu)">&#10062;</div>
         </div>
         <div id="casino__menu" class="no-display menu__container">
-            CASINO
+            <div class="card__wrapper"></div>
+            <div id="casino__card__info">
+                <p id="casino__card__info__rank"></p>
+                <p id="casino__card__info__suit"></p>
+                <p id="casino__card__info__color"></p>
+            </div>
+            <div class="casino__bet__button__container">
+                <button id="casino__bet__button">
+                    Draw a card
+                </button>
+            </div>
             <div class="exit" onclick="exitMenus(casino__menu)">&#10062;</div>
         </div>
     </main>

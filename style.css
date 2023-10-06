@@ -87,7 +87,7 @@ footer {
     height: 100px;
     display: flex;
     justify-content: space-around;
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 
 .stats__counts {
@@ -103,8 +103,7 @@ footer {
     border-radius: 15%;
     width: 30%;
     height: 80%;
-    padding: 10px;
-    padding-bottom: 0px;
+    padding: 10px 10px 0;
     margin: 10px;
 }
 
@@ -197,7 +196,7 @@ footer {
 }
 .stats-divider {
     border-top: 3px dashed black;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 10px;
 }
 
@@ -216,8 +215,7 @@ footer {
 
 .menu__container > ul {
     padding: 0;
-    margin: 1%;
-    margin-bottom: -5px;
+    margin: 1% 1% -5px;
 }
 
 .menu__container > ul > li {
@@ -310,8 +308,7 @@ footer {
 }
 
 .bank_exchange__container {
-    margin: auto;
-    margin-top: 80px;
+    margin: 80px auto auto;
     width: fit-content;
 }
 
@@ -325,18 +322,18 @@ footer {
     -1px 1px 0 #000,
     1px -1px 0 #000,
     -1px -1px 0 #000,
-    0px 1px 0 #000,
-    0px -1px 0 #000,
-    -1px 0px 0 #000,
-    1px 0px 0 #000,
+    0 1px 0 #000,
+    0 -1px 0 #000,
+    -1px 0 0 #000,
+    1px 0 0 #000,
     2px 2px 0 #000,
     -2px 2px 0 #000,
     2px -2px 0 #000,
     -2px -2px 0 #000,
-    0px 2px 0 #000,
-    0px -2px 0 #000,
-    -2px 0px 0 #000,
-    2px 0px 0 #000,
+    0 2px 0 #000,
+    0 -2px 0 #000,
+    -2px 0 0 #000,
+    2px 0 0 #000,
     1px 2px 0 #000,
     -1px 2px 0 #000,
     1px -2px 0 #000,
@@ -369,4 +366,69 @@ footer {
 
 .casino__text {
     color: red;
+}
+
+.card__wrapper {
+    width: 90%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    background: #55aa55;
+    border-radius: 6px;
+    padding: 10px;
+    margin: auto;
+}
+
+.casino__bet__button__container {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    padding: 10px;
+    margin: auto;
+}
+
+#casino__bet__button {
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    border-radius: 6px;
+    background: white;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 3px 6px; }
+.card--person .person {
+    height: 50px; }
+.card__info {
+    display: flex;
+    align-items: center; }
+.card__info:last-of-type {
+    justify-content: flex-end; }
+.card__info img {
+    margin-left: 5px; }
+
+.card {
+    font-family: "Nerko One", cursive;
+    color: #353c4d;
+    font-size: 20px; }
+.card svg, .card img {
+    height: 15px; }
+
+#casino__card__info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: white;
+    width: 50%;
+    margin: 5px auto auto;
+    border-radius: 6px;
 }
