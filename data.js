@@ -23,7 +23,7 @@ let arrayStudyItems = [
     }
 ]
 
-// array of possible items to be rendered
+// NEED TO ADD MORE
 const arrayOfRandomItems = [
     {
         name: "Gym workout",

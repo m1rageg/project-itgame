@@ -99,7 +99,6 @@ function renderExp(countExp){
     needExpDisplay.textContent = `${currentExp}/${needExp}`
 }
 
-
 // function to set character picture depending on hero role
 function setPicture(nameOfPicture){
     const img = document.querySelector('.character__img');
@@ -115,7 +114,6 @@ function checkHeroLevel(hero) {
         }
     });
 }
-
 
 // function to render list items in the menu
 function renderMenu (menuName) {
@@ -136,7 +134,6 @@ function incrementDate(date) {
 
 let gameDate = new Date(2000, 0, 1)
 let countDays = 0
-
 
 // function for increasing current game date
 function increaseGameDate() {
@@ -267,7 +264,6 @@ function changeMenuDisplay (menuToOpen) {
     }
 }
 
-
 //function to exit game menus
 function exitMenus(openedMenu){
     const currentMenu = document.getElementById("character__syka")
@@ -276,8 +272,6 @@ function exitMenus(openedMenu){
     currentMenuId = "character__syka"
 
 }
-
-
 
 //function to logic happiness
 function happinessItem(button){
@@ -325,7 +319,6 @@ function happinessItem(button){
 //     }
 // }
 
-
 function healthItem(button){
     const buttonClass = button.classList[0];
     switch (buttonClass) {
@@ -364,7 +357,6 @@ function healthItem(button){
             console.log('unknown')
         }
 }
-
 
 function foodItem(button){
     const buttonClass = button.classList[0];
@@ -405,8 +397,6 @@ function foodItem(button){
             console.log('unknown')
     }
 }
-
-
 
 function studyItem(button){
     const buttonClass = button.classList[0];
