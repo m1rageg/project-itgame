@@ -286,7 +286,7 @@ function exchangeFormHandler (event) {
 // function to open/close game menus
 let currentMenuId = "character__syka"
 function changeMenuDisplay (menuToOpen) {
-    if (currentMenuId != menuToOpen) {
+    if (currentMenuId !== menuToOpen) {
         const currentMenu = document.getElementById(currentMenuId)
         currentMenu.classList.add("no-display")
         const newMenu = document.getElementById(menuToOpen)
@@ -366,8 +366,8 @@ function happinessItem(button){
             break;
         case 'marry_menu':
             button.innerHTML = arrayHappinessItems[3].isMarried === false ? "You are already married!"  : "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)"
-            arrayHappinessItems[3].isMarried = arrayHappinessItems[3].isMarried === false ? true : false
-            arrayFoodItems[4].isMarried = arrayFoodItems[4].isMarried === false ? true : false
+            arrayHappinessItems[3].isMarried = arrayHappinessItems[3].isMarried === false
+            arrayFoodItems[4].isMarried = arrayFoodItems[4].isMarried === false
             if(arrayHappinessItems[3].isMarried === true || arrayFoodItems[4].isMarried === true){
                 let temp = document.querySelectorAll(".marry_menu")
                 temp.forEach((elem) => elem.innerHTML = "You are already married!")
@@ -476,7 +476,7 @@ function healthItem(button){
             break;
         case 'personaldoctor_menu':
             button.innerHTML = arrayHealthItems[5].isHired === false ? "The doctor is already hired!"  : "Hire a personal doctor(+70&#10084; every month, -25000&#8372 every month)"
-            arrayHealthItems[5].isHired = arrayHealthItems[5].isHired === false? true : false
+            arrayHealthItems[5].isHired = arrayHealthItems[5].isHired === false
             break;
         default:
             console.log('unknown')
@@ -550,12 +550,12 @@ function foodItem(button){
             break;
         case 'personalchef_menu':
             button.innerHTML = arrayFoodItems[3].isHired === false ? "The chef is already hired!"  : "Hire a personal chef(+100&#127828 every month, -20000&#8372)"
-            arrayFoodItems[3].isHired = arrayFoodItems[3].isHired === false? true : false
+            arrayFoodItems[3].isHired = arrayFoodItems[3].isHired === false
             break;
         case 'marry_menu': 
             button.innerHTML = arrayFoodItems[4].isMarried === false ? "You are already married!"  : "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)"
-            arrayFoodItems[4].isMarried = arrayFoodItems[4].isMarried === false? true : false
-            arrayHappinessItems[3].isMarried = arrayHappinessItems[3].isMarried === false ? true : false
+            arrayFoodItems[4].isMarried = arrayFoodItems[4].isMarried === false
+            arrayHappinessItems[3].isMarried = arrayHappinessItems[3].isMarried === false
             if(arrayHappinessItems[3].isMarried === true || arrayFoodItems[4].isMarried === true){
                 let temp = document.querySelectorAll(".marry_menu")
                 temp.forEach((elem) => elem.innerHTML = "You are already married!")
@@ -575,13 +575,13 @@ function studyItem(button){
     const buttonClass = button.classList[0];
     switch (buttonClass) {
         case "book_menu":
-            arrayStudyItems[0].isBought = arrayStudyItems[0].isBought === false ? true : false
+            arrayStudyItems[0].isBought = arrayStudyItems[0].isBought === false
             tempDaysBook = countDays + arrayStudyItems[0].days
             button.setAttribute("onclick", null)
             decrementTimer(".book_menu", arrayStudyItems[0].days)
             break
         case "course_menu":
-            arrayStudyItems[1].isBought = arrayStudyItems[1].isBought === false ? true : false
+            arrayStudyItems[1].isBought = arrayStudyItems[1].isBought === false
             rocketLeague.uah -= arrayStudyItems[1].price;
             tempDaysCourse = countDays + arrayStudyItems[1].days
             button.setAttribute("onclick", null)
@@ -590,7 +590,7 @@ function studyItem(button){
             console.log("clicked")
             break
         case "university_menu":
-            arrayStudyItems[2].isBought = arrayStudyItems[2].isBought === false ? true : false
+            arrayStudyItems[2].isBought = arrayStudyItems[2].isBought === false
             tempDaysUniversity = countDays + arrayStudyItems[2].days
             button.setAttribute("onclick", null)
             decrementTimer(".university_menu", arrayStudyItems[2].days)
@@ -696,10 +696,7 @@ for (let i = 1; i < arrayWorkItems.length; i++) {
 }
 
 function isEnoughLvlToWork(targetLvl){
-    if (currentLevel >= targetLvl){
-        return true
-    }
-    return false
+    return currentLevel >= targetLvl;
 }
 
 function switchJobState(job) {
@@ -736,3 +733,113 @@ function workItem(button){
     const buttonClass = button.classList[0];
     changeWork(`.${buttonClass}`)
 }
+
+// CASINO
+const cardHolder = document.body.querySelector(".card__wrapper") // Declaring main container
+const allCards = []
+
+const suitsList = [] // Creating standard suits images
+const cardNames = ["clubs", "spades", "diamonds", "hearts"]
+for (let suitName of cardNames) {
+    let image = document.createElement("img", )
+    image.src = `img/card_images/${suitName}.svg`
+    image.alt = suitName
+    const colorName = (suitName === "clubs") || (suitName === "spades") ? "black" : "red"
+    suitsList.push({
+        suitName: suitName,
+        color: colorName,
+        element: image,
+    })
+}
+
+for (let number = 2; number <=10; number++) { // Creating numerical cards
+    suitsList.forEach((suit) => {
+        const card = document.createElement("div")
+        card.className = "card"
+        for (let i = 0; i < 2; i++) {
+            const cardSign = document.createElement("div")
+            cardSign.className = "card__info"
+            cardSign.innerHTML = String(number)
+            cardSign.appendChild(suit.element.cloneNode(true))
+            card.appendChild(cardSign)
+        }
+        allCards.push({
+            rank: number.toString(),
+            suit: suit.suitName,
+            color: suit.color,
+            element: card.cloneNode(true)
+        })
+    })
+}
+
+// Creating person img and cards
+const personNames = ["jack", "queen", "king"]
+
+personNames.forEach((personName) => {
+    let personImage = document.createElement("img", )
+    personImage.src = `img/card_images/${personName}.svg`
+    personImage.alt = personName
+    personImage.className = "person"
+
+    suitsList.forEach((suit) => {
+        const card = document.createElement("div")
+        card.className = "card card--person"
+        const cardSign = document.createElement("div")
+        cardSign.className = "card__info"
+        cardSign.innerHTML = personName[0].toUpperCase()
+        cardSign.appendChild(suit.element.cloneNode(true))
+        card.appendChild(cardSign.cloneNode(true))
+        card.appendChild(personImage.cloneNode(true))
+        card.appendChild(cardSign)
+
+        allCards.push({
+            rank: personName,
+            suit: suit.suitName,
+            color: suit.color,
+            element: card.cloneNode(true)
+        })
+    })
+})
+
+suitsList.forEach((suit) => { // Creating spades cards
+    const card = document.createElement("div")
+    card.className = "card card--person"
+    const cardSign = document.createElement("div")
+    cardSign.className = "card__info"
+    cardSign.innerHTML = "A"
+    cardSign.appendChild(suit.element.cloneNode(true))
+    card.appendChild(cardSign.cloneNode(true))
+    const bigImage = suit.element.cloneNode(true)
+    bigImage.className = "person"
+    card.appendChild(bigImage)
+    card.appendChild(cardSign)
+
+    allCards.push({
+        rank: "ace",
+        suit: suit.suitName,
+        color: suit.color,
+        element: card.cloneNode(true)
+    })
+})
+
+// Get random card from the array
+function getRandomCard() {
+    const randomIndex = Math.floor(Math.random()*allCards.length)
+    return allCards[randomIndex]
+}
+
+// Display random card and its info
+function displayRandomCard() {
+    const randomCard = getRandomCard()
+    if (cardHolder.hasChildNodes()){
+        cardHolder.removeChild(cardHolder.firstChild)
+    }
+    cardHolder.appendChild(randomCard.element.cloneNode(true))
+    document.getElementById("casino__card__info__suit").innerText = randomCard.suit
+    document.getElementById("casino__card__info__rank").innerText = randomCard.rank
+    document.getElementById("casino__card__info__color").innerText = randomCard.color
+    document.getElementById("casino__card__info__color").style.color = randomCard.color === "red" ? "red" : "black"
+}
+
+// Add event listener
+document.getElementById("casino__bet__button").addEventListener("click", displayRandomCard)
