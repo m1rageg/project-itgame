@@ -84,7 +84,7 @@ function setBar (id, value) {
 
 const personLevel = document.querySelector(".person__level")
 
-let currentLevel = 1
+let currentLevel = 24
 let currentExp = 0
 let needExp = 1000
 function renderExp(countExp){
@@ -573,16 +573,19 @@ function displayRandomCard() {
 // Add event listener
 document.getElementById("casino__bet__button").addEventListener("click", displayRandomCard)
 
+//salary for job
 function calculateSalary(array) {
     for (let i = 0; i < array.length; i++) {
       const item = array[i];
       const salary = parseFloat(item.salary);
+      const exp = parseFloat(item.exp)
       if (item.isWorking && countDays % 30 === 0) {
+        renderExp(exp);
           if (item.currency === "usd") {
             rocketLeague.usd += salary
           } else if (item.currency === "uah") {
             rocketLeague.uah += salary
           }
         }
-      }
     }
+}
