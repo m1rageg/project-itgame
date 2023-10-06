@@ -184,8 +184,7 @@ function increaseGameDate() {
         
     }
     personLevel.innerHTML = `Current level: ${currentLevel}`
-
-
+    calculateSalary(arrayWorkItems)
     displayHeroStats(rocketLeague)
     setTimeout(increaseGameDate, timeoutTimer)
 }
@@ -297,27 +296,22 @@ function happinessItem(button){
             button.innerHTML = arrayHappinessItems[3].isMarried === false ? "You are already married!"  : "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)"
             arrayHappinessItems[3].isMarried = arrayHappinessItems[3].isMarried === false
             arrayFoodItems[4].isMarried = arrayFoodItems[4].isMarried === false
-            if(arrayHappinessItems[3].isMarried === true || arrayFoodItems[4].isMarried === true){
-                let temp = document.querySelectorAll(".marry_menu")
-                temp.forEach((elem) => elem.innerHTML = "You are already married!")
-            }else {
-                let temp = document.querySelectorAll(".marry_menu")
-                temp.forEach((elem) => elem.innerHTML = "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)")  
-            }
+            updateMarryButton()
             break;
         default:
             console.log('unknown')
         }
 }
 
-// function updateMarryButton() {
-//     let temp = document.querySelectorAll('marry_menu')
-//     if(arrayHappinessItems[3].isMarried === false && arrayHealthItems[4].isMarried === false){  
-//         temp.innerHTML = "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)"
-//     } else if(arrayHappinessItems[3].isMarried === true || arrayHealthItems[4].isMarried === true){
-//         temp.innerHTML = "You are already married!"
-//     }
-// }
+function updateMarryButton() {
+    if(arrayHappinessItems[3].isMarried === true || arrayFoodItems[4].isMarried === true){
+        let temp = document.querySelectorAll(".marry_menu")
+        temp.forEach((elem) => elem.innerHTML = "You are already married!")
+    }else {
+        let temp = document.querySelectorAll(".marry_menu")
+        temp.forEach((elem) => elem.innerHTML = "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)")  
+    }
+}
 
 function healthItem(button){
     const buttonClass = button.classList[0];
@@ -385,13 +379,7 @@ function foodItem(button){
             button.innerHTML = arrayFoodItems[4].isMarried === false ? "You are already married!"  : "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)"
             arrayFoodItems[4].isMarried = arrayFoodItems[4].isMarried === false
             arrayHappinessItems[3].isMarried = arrayHappinessItems[3].isMarried === false
-            if(arrayHappinessItems[3].isMarried === true || arrayFoodItems[4].isMarried === true){
-                let temp = document.querySelectorAll(".marry_menu")
-                temp.forEach((elem) => elem.innerHTML = "You are already married!")
-            } else{
-                let temp = document.querySelectorAll(".marry_menu")
-                temp.forEach((elem) => elem.innerHTML = "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)")  
-            }
+            updateMarryButton()
             break;
         default:
             console.log('unknown')
@@ -584,3 +572,17 @@ function displayRandomCard() {
 
 // Add event listener
 document.getElementById("casino__bet__button").addEventListener("click", displayRandomCard)
+
+function calculateSalary(array) {
+    for (let i = 0; i < array.length; i++) {
+      const item = array[i];
+      const salary = parseFloat(item.salary);
+      if (item.isWorking && countDays % 30 === 0) {
+          if (item.currency === "usd") {
+            rocketLeague.usd += salary
+          } else if (item.currency === "uah") {
+            rocketLeague.uah += salary
+          }
+        }
+      }
+    }
