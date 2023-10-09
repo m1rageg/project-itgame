@@ -468,7 +468,29 @@ function changeWork(workClass){
 
 function workItem(button){
     const buttonClass = button.classList[0];
+    let buttonA = `.${buttonClass}`
+    console.log(checkIsAvailableToWork(arrayWorkItems, buttonA))
     changeWork(`.${buttonClass}`)
+}
+
+// check is available work + end later
+function checkIsAvailableToWork(array, button){
+    for(let i = 0; i < array.length; i++){
+        const item = array[i]
+        if (item.name === button){
+            if(currentLevel >= item.conditions.needLvl){
+                if(item.conditions.coursesEnd in item && item.conditions.coursesEnd === true){
+                    return true
+                } else if (item.conditions.universityEnd in item && item.conditions.universityEnd === true){
+                    return true
+                } else if(item.conditions.needDaysWorked in item && array[i-1].howMuchWorking >= item.conditions.needDaysWorked){
+                    return true
+                }
+            } else {
+                return false
+            }
+        }
+    }
 }
 
 // CASINO
@@ -601,19 +623,3 @@ function calculateSalary(array) {
     }
 }
 
-// check is available work + end later
-function checkIsAvailableToWork(array, button){
-    for(let i = 0; i < array.length; i++){
-        const item = array[i]
-        if(item.conditions.needLvl >= currentLevel){
-            if(item.conditions.coursesEnd in item && item.conditions.coursesEnd === true){
-                return true
-            } else if (item.conditions.universityEnd in item && item.conditions.universityEnd === true){
-                return true
-            }
-            if(item.conditions.needDaysWorked in item && item.conditions.needDaysWorked >= array[i-1].howMuchWorking){
-                return true
-            }
-        }
-    }
-}
