@@ -179,8 +179,9 @@ arrayWorkItems = [
         exp: 0,
         isWorking: false,
         needLvl: 0,
-        description: "Work on a construction site(+7000&#8372 every month)",
-        ifWorking: "You are already working on a construction site."
+        description: "Work on a construction site(salary: 7000&#8372)",
+        ifWorking: "You are already working on a construction site.",
+        howMuchWorking: 0
     },
     {
         name: ".courier_menu",
@@ -189,8 +190,9 @@ arrayWorkItems = [
         exp: 0,
         isWorking: false,
         needLvl: 5,
-        description: "Work as a courier(+12000&#8372 every month)",
-        ifWorking: ""
+        description: "Work as a courier(salary: 12000&#8372). Required lvl: 5.",
+        ifWorking: "",
+        howMuchWorking: 0
     },
     {
         name: ".waiter_menu",
@@ -199,58 +201,64 @@ arrayWorkItems = [
         exp: 0,
         isWorking: false,
         needLvl: 13,
-        description: "Work as a waiter(+17000&#8372 every month)",
-        ifWorking: ""
+        description: "Work as a waiter(salary: 17000&#8372). Required lvl: 13",
+        ifWorking: "",
+        howMuchWorking: 0
     },
     {
         name: ".trainee_menu",
         salary: "1000",
         currency: "usd",
-        exp: 2000,
+        exp: 600,
         isWorking: false,
         needLvl: 20,
-        description: "Trainee(+1000$ every month, + 2000exp every month)",
-        ifWorking: ""
+        description: "Trainee(salary: 1000$, + 600exp every month). Required lvl: 20, courses must be taken.",
+        ifWorking: "",
+        howMuchWorking: 0
     },
     {
         name: ".junior_menu",
         salary: "1500",
         currency: "usd",
-        exp: 4000,
+        exp: 900,
         isWorking: false,
         needLvl: 40,
-        description: "Junior(+1500$ every month, + 4000exp every month)",
-        ifWorking: ""
+        description: "Junior(salary: 1500$, + 900exp every month). Required lvl: 40, university must be finished.",
+        ifWorking: "",
+        howMuchWorking: 0
     },
     {
         name: ".middle_menu",
         salary: "2500",
         currency: "usd",
-        exp: 6000,
+        exp: 1200,
         isWorking: false,
         needLvl: 60,
-        description: "Middle(+2500$ every month, + 6000exp every month)",
-        ifWorking: ""
+        description: "Middle(salary: 2500$, + 1200exp every month). Required lvl: 60, have to work as a junior at least 2 years.",
+        ifWorking: "",
+        howMuchWorking: 0
     },
     {
         name: ".senior_menu",
         salary: "5000",
         currency: "usd",
-        exp: 8000,
+        exp: 1600,
         isWorking: false,
         needLvl: 80,
-        description: "Senior(+5000$ every month, + 8000exp every month)",
-        ifWorking: ""
+        description: "Senior(salary: 5000$, + 1600exp every month). Required lvl: 80, have to work as a middle at least 3 years.",
+        ifWorking: "",
+        howMuchWorking: 0
     },
     {
         name: ".teamlead_menu",
         salary: "10000",
         currency: "usd",
-        exp: 10000,
+        exp: 2000,
         isWorking: false,
         needLvl: 100,
-        description: "TeamLead(+10000$ every month, + 10000exp every month)",
-        ifWorking: ""
+        description: "TeamLead(salary: 10000$, + 2000exp every month). Required lvl: 100, have to work as a senior at least 5 years.",
+        ifWorking: "",
+        howMuchWorking: 0
     }
 ]
 

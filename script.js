@@ -29,6 +29,12 @@ class MainHero{
     }
 }
 
+// const bodyElem = document.body
+// bodyElem.style.cursor = "default"
+// bodyElem.addEventListener('selectstart', (event) => {
+//     event.preventDefault();
+// })
+
 let tempDaysCourse = 0
 let tempDaysUniversity = 0
 let tempDaysBook = 0
