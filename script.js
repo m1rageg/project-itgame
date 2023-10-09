@@ -171,6 +171,7 @@ function increaseGameDate() {
     }
     if (arrayStudyItems[1].isBought === true && tempDaysCourse === countDays){
         renderExp(arrayStudyItems[1].exp);
+        arrayWorkItems[3].conditions.coursesEnd = true
         arrayStudyItems[1].isBought = false
         document.querySelector(".course_menu").setAttribute("onclick", "studyItem(this)")
         document.querySelector(".course_menu").innerHTML = "Buy courses(+1500exp, -7000&#8372, 90 days)"
@@ -179,6 +180,7 @@ function increaseGameDate() {
     if (arrayStudyItems[2].isBought === true && tempDaysUniversity === countDays){
         renderExp(arrayStudyItems[2].exp);
         arrayStudyItems[2].isBought = false
+        arrayWorkItems[4].conditions.universityEnd = true
         document.querySelector(".university_menu").setAttribute("onclick", "studyItem(this)")
         document.querySelector(".course_menu").innerHTML = "University(+5000exp, 1095 days)"
     }
@@ -585,6 +587,9 @@ function calculateSalary(array) {
       const item = array[i];
       const salary = parseFloat(item.salary);
       const exp = parseFloat(item.exp)
+      if(item.isWorking){
+        item.howMuchWorking += 1
+      }
       if (item.isWorking && countDays % 30 === 0) {
         renderExp(exp);
           if (item.currency === "usd") {
@@ -592,6 +597,23 @@ function calculateSalary(array) {
           } else if (item.currency === "uah") {
             rocketLeague.uah += salary
           }
+        }
+    }
+}
+
+// check is available work + end later
+function checkIsAvailableToWork(array, button){
+    for(let i = 0; i < array.length; i++){
+        const item = array[i]
+        if(item.conditions.needLvl >= currentLevel){
+            if(item.conditions.coursesEnd in item && item.conditions.coursesEnd === true){
+                return true
+            } else if (item.conditions.universityEnd in item && item.conditions.universityEnd === true){
+                return true
+            }
+            if(item.conditions.needDaysWorked in item && item.conditions.needDaysWorked >= array[i-1].howMuchWorking){
+                return true
+            }
         }
     }
 }

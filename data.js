@@ -178,7 +178,9 @@ arrayWorkItems = [
         currency: "uah",
         exp: 0,
         isWorking: false,
-        needLvl: 0,
+        conditions: {
+            needLvl: 0,
+        },
         description: "Work on a construction site(salary: 7000&#8372)",
         ifWorking: "You are already working on a construction site.",
         howMuchWorking: 0
@@ -189,7 +191,9 @@ arrayWorkItems = [
         currency: "uah",
         exp: 0,
         isWorking: false,
-        needLvl: 5,
+        conditions: {
+            needLvl: 5,
+        },
         description: "Work as a courier(salary: 12000&#8372). Required lvl: 5.",
         ifWorking: "",
         howMuchWorking: 0
@@ -200,7 +204,9 @@ arrayWorkItems = [
         currency: "uah",
         exp: 0,
         isWorking: false,
-        needLvl: 13,
+        conditions: {
+            needLvl: 13,
+        },
         description: "Work as a waiter(salary: 17000&#8372). Required lvl: 13",
         ifWorking: "",
         howMuchWorking: 0
@@ -211,7 +217,10 @@ arrayWorkItems = [
         currency: "usd",
         exp: 600,
         isWorking: false,
-        needLvl: 20,
+        conditions:{
+            needLvl: 20,
+            coursesEnd: false
+        },
         description: "Trainee(salary: 1000$, + 600exp every month). Required lvl: 20, courses must be taken.",
         ifWorking: "",
         howMuchWorking: 0
@@ -222,7 +231,10 @@ arrayWorkItems = [
         currency: "usd",
         exp: 900,
         isWorking: false,
-        needLvl: 40,
+        conditions: {
+            needLvl: 40,
+            universityEnd: false
+        },
         description: "Junior(salary: 1500$, + 900exp every month). Required lvl: 40, university must be finished.",
         ifWorking: "",
         howMuchWorking: 0
@@ -233,7 +245,10 @@ arrayWorkItems = [
         currency: "usd",
         exp: 1200,
         isWorking: false,
-        needLvl: 60,
+        conditions: {
+            needLvl: 60,
+            needDaysWorked: 730,
+        },
         description: "Middle(salary: 2500$, + 1200exp every month). Required lvl: 60, have to work as a junior at least 2 years.",
         ifWorking: "",
         howMuchWorking: 0
@@ -244,7 +259,10 @@ arrayWorkItems = [
         currency: "usd",
         exp: 1600,
         isWorking: false,
-        needLvl: 80,
+        conditions: {
+            needLvl: 80,
+            needDaysWorked: 1095,
+        },
         description: "Senior(salary: 5000$, + 1600exp every month). Required lvl: 80, have to work as a middle at least 3 years.",
         ifWorking: "",
         howMuchWorking: 0
@@ -255,7 +273,10 @@ arrayWorkItems = [
         currency: "usd",
         exp: 2000,
         isWorking: false,
-        needLvl: 100,
+        conditions: {
+            needLvl: 100,
+            needDaysWorked: 1825,
+        },
         description: "TeamLead(salary: 10000$, + 2000exp every month). Required lvl: 100, have to work as a senior at least 5 years.",
         ifWorking: "",
         howMuchWorking: 0
