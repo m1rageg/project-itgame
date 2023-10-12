@@ -450,7 +450,7 @@ function switchJobState(job) {
 
 function changeWork(workClass){
     arrayWorkItems.forEach((job) => {
-        if (job.name === workClass && isEnoughLvlToWork(job.needLvl)) {
+        if (job.name === workClass && isEnoughLvlToWork(job.conditions.needLvl)) {
             switchJobState(job)
             arrayWorkItems.forEach((job) => {
                 const jobContainer = document.querySelector(job.name)
@@ -468,30 +468,30 @@ function changeWork(workClass){
 
 function workItem(button){
     const buttonClass = button.classList[0];
-    let buttonA = `.${buttonClass}`
-    console.log(checkIsAvailableToWork(arrayWorkItems, buttonA))
+    // let buttonA = `.${buttonClass}`
+    // console.log(checkIsAvailableToWork(arrayWorkItems, buttonA))
     changeWork(`.${buttonClass}`)
 }
 
 // check is available work + end later
-function checkIsAvailableToWork(array, button){
-    for(let i = 0; i < array.length; i++){
-        const item = array[i]
-        if (item.name === button){
-            if(currentLevel >= item.conditions.needLvl){
-                if(item.conditions.coursesEnd in item && item.conditions.coursesEnd === true){
-                    return true
-                } else if (item.conditions.universityEnd in item && item.conditions.universityEnd === true){
-                    return true
-                } else if(item.conditions.needDaysWorked in item && array[i-1].howMuchWorking >= item.conditions.needDaysWorked){
-                    return true
-                }
-            } else {
-                return false
-            }
-        }
-    }
-}
+// function checkIsAvailableToWork(array, button){
+//     for(let i = 0; i < array.length; i++){
+//         const item = array[i]
+//         if (item.name === button){
+//             if(currentLevel >= item.conditions.needLvl){
+//                 if(item.conditions.coursesEnd in item && item.conditions.coursesEnd === true){
+//                     return true
+//                 } else if (item.conditions.universityEnd in item && item.conditions.universityEnd === true){
+//                     return true
+//                 } else if(item.conditions.needDaysWorked in item && array[i-1].howMuchWorking >= item.conditions.needDaysWorked){
+//                     return true
+//                 }
+//             } else {
+//                 return false
+//             }
+//         }
+//     }
+// }
 
 // CASINO
 const cardHolder = document.body.querySelector(".card__wrapper") // Declaring main container
@@ -603,7 +603,7 @@ function displayRandomCard() {
 // Add event listener
 document.getElementById("casino__bet__button").addEventListener("click", displayRandomCard)
 
-//salary for job
+// salary for job
 function calculateSalary(array) {
     for (let i = 0; i < array.length; i++) {
       const item = array[i];
