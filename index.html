@@ -54,6 +54,7 @@
             <div class="casino__button" onclick="changeMenuDisplay('casino__menu')">
                 <h2 class="casino__text">CASINO</h2>
             </div>
+            
             <img class="character__img" src="img/poorstudent.png" alt="character">
             <div class="bank__button" onclick="changeMenuDisplay('bank__menu')">
                 <h2 class="bank__text">BANK</h2>
@@ -107,6 +108,12 @@
             <div class="exit" onclick="exitMenus(food__menu)">&#10062;</div> 
         </div>
         <div id="work__menu" class="no-display menu__container">
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <p>You cant work here now <br> :c </p>
+                </div>
+            </div>
             <ul id="work__items__li">
                 <li><button onclick="workItem(this)" class="constructionsite_menu work_button">Work on a construction site(salary: 7000&#8372).</button></li>
                 <li><button onclick="workItem(this)" class="courier_menu work_button">Work as a courier(salary: 12000&#8372). Required lvl: 5.</button></li>

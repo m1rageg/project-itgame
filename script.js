@@ -465,12 +465,26 @@ function changeWork(workClass){
     })
 }
 
+function openModal() {
+    let modal = document.getElementById("myModal");
+    if (modal) {
+        modal.style.display = "block";
+    }
+}
+
+function closeModal() {
+    let modal = document.getElementById("myModal");
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
 
 function workItem(button){
     const buttonClass = button.classList[0];
     let res = `.${buttonClass}`
     if(!checkIsAvailableToWork(arrayWorkItems, res)){
-        alert('U cant work here.')
+        openModal()
         return false
     }
     changeWork(res)
