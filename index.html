@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
 </head>
 <body>
+    
     <header>
         <div class="header__container">
             <div class="stats">
@@ -93,6 +94,12 @@
             <div class="exit" onclick="exitMenus(happiness__menu)">&#10062;</div>
         </div>
         <div id="food__menu" class="no-display menu__container">
+            <div id ="myModalFood" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('myModalFood')">&times;</span>
+                    <p id="text__modalFood"></p>
+                </div>
+            </div>
             <ul id="food__items__li">
                 <li><button onclick="foodItem(this)" class="meal_menu">Meal(+20&#127828, -5&#128525)</button></li>
                 <li><button onclick="foodItem(this)" class="fastfood_menu">Fast food(+30&#127828,-10&#10084, -300&#8372)</button></li>
@@ -108,10 +115,10 @@
             <div class="exit" onclick="exitMenus(food__menu)">&#10062;</div> 
         </div>
         <div id="work__menu" class="no-display menu__container">
-            <div id="myModal" class="modal">
+            <div id ="myModalWork" class="modal">
                 <div class="modal-content">
-                    <span class="close" onclick="closeModal()">&times;</span>
-                    <p>You cant work here now <br> :c </p>
+                    <span class="close" onclick="closeModal('myModalWork')">&times;</span>
+                    <p id="text__modalWork"></p>
                 </div>
             </div>
             <ul id="work__items__li">

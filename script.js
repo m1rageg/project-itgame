@@ -91,7 +91,7 @@ function setBar (id, value) {
 const personLevel = document.querySelector(".person__level")
 
 //stats exp
-let currentLevel = 49
+let currentLevel = 9
 let currentExp = 0
 let needExp = 1000
 function renderExp(countExp){
@@ -377,9 +377,13 @@ function foodItem(button){
             displayHeroStats(rocketLeague)
             break;
         case 'restaurant_menu':
-            rocketLeague.addFood(arrayFoodItems[2].buffFood)
-            rocketLeague.uah -= arrayFoodItems[2].price
-            displayHeroStats(rocketLeague)
+            if(checkBalance(arrayFoodItems[2].price, rocketLeague.uah)){
+                rocketLeague.addFood(arrayFoodItems[2].buffFood)
+                rocketLeague.uah -= arrayFoodItems[2].price
+                displayHeroStats(rocketLeague)
+            } else {
+                openModal("myModalFood","text__modalFood", "No money :c")
+            }
             break;
         case 'personalchef_menu':
             button.innerHTML = arrayFoodItems[3].isHired === false ? "The chef is already hired!"  : "Hire a personal chef(+100&#127828 every month, -20000&#8372)"
@@ -467,15 +471,17 @@ function changeWork(workClass){
     })
 }
 
-function openModal() {
-    let modal = document.getElementById("myModal");
+function openModal(modalId, textId, text) {
+    let modal = document.getElementById(modalId);
+    let modalCont = document.getElementById(textId);
     if (modal) {
         modal.style.display = "block";
+        modalCont.innerText = text
     }
 }
 
-function closeModal() {
-    let modal = document.getElementById("myModal");
+function closeModal(modalId) {
+    let modal = document.getElementById(modalId);
     if (modal) {
         modal.style.display = "none";
     }
@@ -486,7 +492,7 @@ function workItem(button){
     const buttonClass = button.classList[0];
     let res = `.${buttonClass}`
     if(!checkIsAvailableToWork(arrayWorkItems, res)){
-        openModal()
+        openModal("myModalWork", "text__modalWork", "You cant work here now :c")
         return false
     }
     changeWork(res)
@@ -551,4 +557,11 @@ function renderImg(level) {
     } else if (level >= 80) {
         imgClass.src = "img/senior.png";
     }
+}
+
+function checkBalance(price, currentMoney){
+    if (price > currentMoney){
+        return false
+    }
+    return true
 }
