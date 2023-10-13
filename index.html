@@ -160,11 +160,16 @@
                 <p id="casino__card__info__suit"></p>
                 <p id="casino__card__info__color"></p>
             </div>
-            <div class="casino__bet__button__container">
-                <button id="casino__bet__button">
-                    Draw a card
-                </button>
+            <div class="casino__bet__container">
+                <label for="colorChoiceRed">Red</label>
+                <input id="colorChoiceRed" type="radio" name="colorChoice" value="red">
+                <label for="colorChoiceBlack">Black</label>
+                <input id="colorChoiceBlack" type="radio" name="colorChoice" value="black">
+                <label for="inputBetValue"></label>
+                <input id="inputBetValue" type="number" min="100" value="100" step="100">
+                <button id="casino__bet__button" type="submit">Place a bet</button>
             </div>
+
             <div class="exit" onclick="exitMenus(casino__menu)">&#10062;</div>
         </div>
     </main>
@@ -192,5 +197,6 @@
     </footer>
     <script src="data.js"></script>
     <script src="script.js"></script>
+    <script src="casino.js"></script>
 </body>
 </html>

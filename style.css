@@ -383,13 +383,6 @@ footer {
     margin: auto;
 }
 
-.casino__bet__button__container {
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    padding: 10px;
-    margin: auto;
-}
 
 #casino__bet__button {
     width: 200px;
