@@ -90,7 +90,8 @@ function setBar (id, value) {
 
 const personLevel = document.querySelector(".person__level")
 
-let currentLevel = 24
+//stats exp
+let currentLevel = 49
 let currentExp = 0
 let needExp = 1000
 function renderExp(countExp){
@@ -194,6 +195,7 @@ function increaseGameDate() {
     personLevel.innerHTML = `Current level: ${currentLevel}`
     calculateSalary(arrayWorkItems)
     displayHeroStats(rocketLeague)
+    renderImg(currentLevel)
     setTimeout(increaseGameDate, timeoutTimer)
 }
 increaseGameDate()
@@ -534,3 +536,19 @@ function calculateSalary(array) {
     }
 }
 
+//function to render IMG
+function renderImg(level) {
+    const imgClass = document.querySelector(".character__img");
+
+    if (level >= 10 && level < 20) {
+        imgClass.src = "img/student.png";
+    } else if (level >= 20 && level < 40) {
+        imgClass.src = "img/trainee.png";
+    } else if (level >= 40 && level < 60) {
+        imgClass.src = "img/junior.png";
+    } else if (level >= 60 && level < 80) {
+        imgClass.src = "img/middle.png";
+    } else if (level >= 80) {
+        imgClass.src = "img/senior.png";
+    }
+}
