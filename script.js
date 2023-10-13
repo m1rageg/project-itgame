@@ -468,30 +468,36 @@ function changeWork(workClass){
 
 function workItem(button){
     const buttonClass = button.classList[0];
-    // let buttonA = `.${buttonClass}`
-    // console.log(checkIsAvailableToWork(arrayWorkItems, buttonA))
-    changeWork(`.${buttonClass}`)
+    let res = `.${buttonClass}`
+    if(!checkIsAvailableToWork(arrayWorkItems, res)){
+        alert('U cant work here.')
+        return false
+    }
+    changeWork(res)
 }
 
 // check is available work + end later
-// function checkIsAvailableToWork(array, button){
-//     for(let i = 0; i < array.length; i++){
-//         const item = array[i]
-//         if (item.name === button){
-//             if(currentLevel >= item.conditions.needLvl){
-//                 if(item.conditions.coursesEnd in item && item.conditions.coursesEnd === true){
-//                     return true
-//                 } else if (item.conditions.universityEnd in item && item.conditions.universityEnd === true){
-//                     return true
-//                 } else if(item.conditions.needDaysWorked in item && array[i-1].howMuchWorking >= item.conditions.needDaysWorked){
-//                     return true
-//                 }
-//             } else {
-//                 return false
-//             }
-//         }
-//     }
-// }
+function checkIsAvailableToWork(array, button) {
+    let available = true;
+    for (let i = 0; i < array.length; i++) {
+        const item = array[i];
+        if (item.name === button) {
+            if (currentLevel < item.conditions.needLvl) {
+                available = false;
+            }
+            if (item.conditions.hasOwnProperty("coursesEnd") && !item.conditions.coursesEnd) {
+                available = false;
+            }
+            if (item.conditions.hasOwnProperty("universityEnd") && !item.conditions.universityEnd) {
+                available = false;
+            }
+            if (item.conditions.hasOwnProperty("needDaysWorked") && item.conditions.needDaysWorked > array[i - 1].howMuchWorking) {
+                available = false;
+            }
+        }
+    }
+    return available;
+}
 
 
 // salary for job
