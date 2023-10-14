@@ -62,10 +62,16 @@
             </div>
         </div>
         <div id="health__menu" class="no-display  menu__container">
+            <div id ="myModalHealth" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('myModalHealth')">&times;</span>
+                    <p id="text__modalHealth"></p>
+                </div>
+            </div>
             <ul id="health__items__li">
                 <li><button onclick="healthItem(this)" class="workout_menu">Workout (+5&#10084;, -3&#127828)</button></li>
                 <li><button onclick="healthItem(this)" class="pill_menu">Take a pill (+15&#10084;, -5&#128525;)</button></li>
-                <li><button onclick="healthItem(this)" class="doctor_menu">Go to the doctor (+25&#10084;, -5&#127828;, -1000&#8372)</button></li>
+                <li><button onclick="healthItem(this)" class="doctor_menu">Go to the doctor (+25&#10084;, -5&#128525;, -1000&#8372)</button></li>
                 <li><button onclick="healthItem(this)" class="hospital_menu">Go to the private hospital(+50&#10084;, -15&#127828, -4000&#8372)</button></li>
                 <li><button onclick="healthItem(this)" class="abroad_menu">Get treatment abroad(+100&#10084;, -4000$)</button></li>
                 <li><button onclick="healthItem(this)" class="personaldoctor_menu">Hire a personal doctor(+70&#10084; every month, -25000&#8372 every month)</button></li>
@@ -79,6 +85,12 @@
             <div class="exit" onclick="exitMenus(health__menu)">&#10062;</div>
         </div>
         <div id="happiness__menu" class="no-display menu__container">
+            <div id ="myModalHappiness" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('myModalHappiness')">&times;</span>
+                    <p id="text__modalHappiness"></p>
+                </div>
+            </div>
             <ul id="happiness__items__li">
                 <li><button onclick="happinessItem(this)" class="walk_menu">Go for a walk (+5&#128525;, -2&#127828)</button></li>
                 <li><button onclick="happinessItem(this)" class="sleep_menu">Sleep (+10&#128525;, -5&#127828)</button></li>

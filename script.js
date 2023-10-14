@@ -7,8 +7,8 @@ class MainHero{
         this.happiness = 50;
         this.food = 50;
         this.exp = null;
-        this.usd = 0
-        this.uah = 0
+        this.usd = 10000
+        this.uah = 10000
     }
     addHealth(value){
         this.health += value
@@ -288,20 +288,18 @@ function happinessItem(button){
     const buttonClass = button.classList[0];
     switch (buttonClass) {
         case 'sleep_menu':
-            rocketLeague.addHappiness(arrayHappinessItems[1].buffHappiness)
-            rocketLeague.addFood(arrayHappinessItems[1].buffFood)
-            displayHeroStats(rocketLeague)
+            addStats({food : arrayHappinessItems[1].buffFood, happiness: arrayHappinessItems[1].buffHappiness})
             break;
         case 'walk_menu':
-            rocketLeague.addHappiness(arrayHappinessItems[0].buffHappiness)
-            rocketLeague.addFood(arrayHappinessItems[0].buffFood)
-            displayHeroStats(rocketLeague)  
+            addStats({food : arrayHappinessItems[0].buffFood, happiness: arrayHappinessItems[0].buffHappiness}) 
             break;
         case 'cake_menu':
-            rocketLeague.addHappiness(arrayHappinessItems[2].buffHappiness)
-            rocketLeague.addFood(arrayHappinessItems[2].buffFood)
-            rocketLeague.uah -= arrayHappinessItems[2].price
-            displayHeroStats(rocketLeague)
+            if(checkBalance(arrayHappinessItems[2].price, rocketLeague.uah)){
+                addStats({happiness : arrayHappinessItems[2].buffFood, food: arrayHappinessItems[2].buffFood})
+                rocketLeague.uah -= arrayHappinessItems[2].price
+            } else {
+                openModal("myModalHappiness","text__modalHappiness", "No money :c")
+            }
             break;
         case 'marry_menu':
             button.innerHTML = arrayHappinessItems[3].isMarried === false ? "You are already married!"  : "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)"
@@ -328,31 +326,34 @@ function healthItem(button){
     const buttonClass = button.classList[0];
     switch (buttonClass) {
         case 'workout_menu':
-            rocketLeague.addHealth(arrayHealthItems[0].buffHealth)
-            rocketLeague.addFood(arrayHealthItems[0].buffFood)
-            displayHeroStats(rocketLeague)
+            addStats({food : arrayHealthItems[0].buffFood, health: arrayHealthItems[0].buffHealth})
             break;
         case 'pill_menu':
-            rocketLeague.addHealth(arrayHealthItems[1].buffHealth)
-            rocketLeague.addHappiness(arrayHealthItems[1].buffHappiness)
-            displayHeroStats(rocketLeague)
+            addStats({happiness : arrayHealthItems[1].buffHappiness, health: arrayHealthItems[1].buffHealth})
             break;
         case 'doctor_menu':
-            rocketLeague.addHealth(arrayHealthItems[2].buffHealth)
-            rocketLeague.addHappiness(arrayHealthItems[2].buffHappiness)
-            rocketLeague.uah -= arrayHealthItems[2].price
-            displayHeroStats(rocketLeague)
+            if(checkBalance(arrayHealthItems[2].price, rocketLeague.uah)){
+                addStats({happiness : arrayHealthItems[2].buffHappiness, health: arrayHealthItems[2].buffHealth})
+                rocketLeague.uah -= arrayHealthItems[2].price
+            } else {
+                openModal("myModalHealth","text__modalHealth", "No money :c")
+            }
             break;
         case 'hospital_menu':
-            rocketLeague.addHealth(arrayHealthItems[3].buffHealth)
-            rocketLeague.addFood(arrayHealthItems[3].buffFood)
-            rocketLeague.uah -= arrayHealthItems[3].price
-            displayHeroStats(rocketLeague)
+            if(checkBalance(arrayHealthItems[3].price, rocketLeague.uah)){
+                addStats({food : arrayHealthItems[3].buffFood, health: arrayHealthItems[3].buffHealth})
+                rocketLeague.uah -= arrayHealthItems[3].price
+            } else {
+                openModal("myModalHealth","text__modalHealth", "No money :c")
+            }
             break;
         case 'abroad_menu':
-            rocketLeague.addHealth(arrayHealthItems[4].buffHealth)
-            rocketLeague.usd -= arrayHealthItems[4].price
-            displayHeroStats(rocketLeague)
+            if(checkBalance(arrayHealthItems[4].price, rocketLeague.usd)){
+                addStats({health: arrayHealthItems[4].buffHealth})
+                rocketLeague.usd -= arrayHealthItems[4].price
+            } else {
+                openModal("myModalHealth","text__modalHealth", "No money :c")
+            }
             break;
         case 'personaldoctor_menu':
             button.innerHTML = arrayHealthItems[5].isHired === false ? "The doctor is already hired!"  : "Hire a personal doctor(+70&#10084; every month, -25000&#8372 every month)"
@@ -367,29 +368,32 @@ function foodItem(button){
     const buttonClass = button.classList[0];
     switch (buttonClass) {
         case 'meal_menu':
-            rocketLeague.addFood(arrayFoodItems[0].buffFood)
-            rocketLeague.addHappiness(arrayFoodItems[0].buffHappiness)
-            displayHeroStats(rocketLeague)
+            addStats({food : arrayFoodItems[0].buffFood, happiness: arrayFoodItems[0].buffHappiness})
             break;
+
         case 'fastfood_menu':
-            rocketLeague.addHealth(arrayFoodItems[1].buffHealth)
-            rocketLeague.addFood(arrayFoodItems[1].buffFood)
-            rocketLeague.uah -= arrayFoodItems[1].price
-            displayHeroStats(rocketLeague)
-            break;
-        case 'restaurant_menu':
-            if(checkBalance(arrayFoodItems[2].price, rocketLeague.uah)){
-                rocketLeague.addFood(arrayFoodItems[2].buffFood)
-                rocketLeague.uah -= arrayFoodItems[2].price
-                displayHeroStats(rocketLeague)
+            if(checkBalance(arrayFoodItems[1].price, rocketLeague.uah)){
+                addStats({food : arrayFoodItems[1].buffFood, health: arrayFoodItems[1].buffHealth})
+                rocketLeague.uah -= arrayFoodItems[1].price
             } else {
                 openModal("myModalFood","text__modalFood", "No money :c")
             }
             break;
+
+        case 'restaurant_menu':
+            if(checkBalance(arrayFoodItems[2].price, rocketLeague.uah)){
+                addStats({food : arrayFoodItems[2].buffFood})
+                rocketLeague.uah -= arrayFoodItems[2].price
+            } else {
+                openModal("myModalFood","text__modalFood", "No money :c")
+            }
+            break;
+
         case 'personalchef_menu':
             button.innerHTML = arrayFoodItems[3].isHired === false ? "The chef is already hired!"  : "Hire a personal chef(+100&#127828 every month, -20000&#8372)"
             arrayFoodItems[3].isHired = arrayFoodItems[3].isHired === false
             break;
+
         case 'marry_menu': 
             button.innerHTML = arrayFoodItems[4].isMarried === false ? "You are already married!"  : "Marry(+70&#128525 every month, +70&#127828 every month, -10000&#8372 every month)"
             arrayFoodItems[4].isMarried = arrayFoodItems[4].isMarried === false
@@ -565,4 +569,11 @@ function checkBalance(price, currentMoney){
         return false
     }
     return true
+}
+
+function addStats(stats) {
+    rocketLeague.health += stats.health || 0;
+    rocketLeague.food += stats.food || 0;
+    rocketLeague.happiness += stats.happiness || 0;
+    displayHeroStats(rocketLeague);
 }
