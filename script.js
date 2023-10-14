@@ -584,6 +584,15 @@ function addStats(stats) {
     if(rocketLeague.happiness > 100){
         rocketLeague.happiness = 100
     }
+    if(rocketLeague.health < 0){
+        rocketLeague.health = 0
+    }
+    if(rocketLeague.food < 0){
+        rocketLeague.food = 0
+    }
+    if(rocketLeague.happiness < 0){
+        rocketLeague.happiness = 0
+    }
     displayHeroStats(rocketLeague);
 }
 
