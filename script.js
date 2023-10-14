@@ -1,4 +1,5 @@
 //Javascript не використовується
+
 class MainHero{
     constructor(name,){
         this.name = name;
