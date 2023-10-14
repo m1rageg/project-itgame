@@ -116,18 +116,23 @@ function makeBet(event) {
             currentBetOption = option.value
         }
     })
+    const betValue = +document.getElementById("inputBetValue").value
     let randomCard = false
-    if (currentBetOption) {
-        const betValue = +document.getElementById("inputBetValue").value
-        randomCard = getRandomCard()
-        console.log(currentBetOption, randomCard.color)
-        if (currentBetOption === randomCard.color) {
-            rocketLeague.uah += betValue
-        } else {
-            rocketLeague.uah -= betValue
+    if (rocketLeague.uah >= betValue) {
+        if (currentBetOption) {
+            randomCard = getRandomCard()
+            console.log(currentBetOption, randomCard.color)
+            if (currentBetOption === randomCard.color) {
+                rocketLeague.uah += betValue
+            } else {
+                rocketLeague.uah -= betValue
+            }
         }
+        displayCard(randomCard)
+    } else {
+        alert("Not enough money")
     }
-    displayCard(randomCard)
+
 }
 
 // Add event listener
