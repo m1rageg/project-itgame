@@ -148,6 +148,12 @@
             <div class="exit" onclick="exitMenus(work__menu)">&#10062;</div>
         </div>
         <div id="study__menu" class="no-display menu__container">
+            <div id ="myModalStudy" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('myModalStudy')">&times;</span>
+                    <p id="text__modalStudy"></p>
+                </div>
+            </div>
             <ul id="study__items__li">
                 <li><button onclick="studyItem(this)" class="book_menu">Read a book(+300exp, 10 days)</button></li>
                 <li><button onclick="studyItem(this)" class="course_menu">Buy courses(+1500exp, -7000&#8372, 90 days)</button></li>

@@ -298,7 +298,7 @@ function happinessItem(button){
                 addStats({happiness : arrayHappinessItems[2].buffFood, food: arrayHappinessItems[2].buffFood})
                 rocketLeague.uah -= arrayHappinessItems[2].price
             } else {
-                openModal("myModalHappiness","text__modalHappiness", "No money :c")
+                openModal("myModalHappiness","text__modalHappiness", "Not enough money :c")
             }
             break;
         case 'marry_menu':
@@ -336,7 +336,7 @@ function healthItem(button){
                 addStats({happiness : arrayHealthItems[2].buffHappiness, health: arrayHealthItems[2].buffHealth})
                 rocketLeague.uah -= arrayHealthItems[2].price
             } else {
-                openModal("myModalHealth","text__modalHealth", "No money :c")
+                openModal("myModalHealth","text__modalHealth", "Not enough money :c")
             }
             break;
         case 'hospital_menu':
@@ -344,7 +344,7 @@ function healthItem(button){
                 addStats({food : arrayHealthItems[3].buffFood, health: arrayHealthItems[3].buffHealth})
                 rocketLeague.uah -= arrayHealthItems[3].price
             } else {
-                openModal("myModalHealth","text__modalHealth", "No money :c")
+                openModal("myModalHealth","text__modalHealth", "Not enough money :c")
             }
             break;
         case 'abroad_menu':
@@ -352,7 +352,7 @@ function healthItem(button){
                 addStats({health: arrayHealthItems[4].buffHealth})
                 rocketLeague.usd -= arrayHealthItems[4].price
             } else {
-                openModal("myModalHealth","text__modalHealth", "No money :c")
+                openModal("myModalHealth","text__modalHealth", "Not enough money :c")
             }
             break;
         case 'personaldoctor_menu':
@@ -376,7 +376,7 @@ function foodItem(button){
                 addStats({food : arrayFoodItems[1].buffFood, health: arrayFoodItems[1].buffHealth})
                 rocketLeague.uah -= arrayFoodItems[1].price
             } else {
-                openModal("myModalFood","text__modalFood", "No money :c")
+                openModal("myModalFood","text__modalFood", "Not enough money :c")
             }
             break;
 
@@ -385,7 +385,7 @@ function foodItem(button){
                 addStats({food : arrayFoodItems[2].buffFood})
                 rocketLeague.uah -= arrayFoodItems[2].price
             } else {
-                openModal("myModalFood","text__modalFood", "No money :c")
+                openModal("myModalFood","text__modalFood", "Not enough money :c")
             }
             break;
 
@@ -415,21 +415,21 @@ function studyItem(button){
             decrementTimer(".book_menu", arrayStudyItems[0].days)
             break
         case "course_menu":
-            arrayStudyItems[1].isBought = arrayStudyItems[1].isBought === false
-            rocketLeague.uah -= arrayStudyItems[1].price;
-            tempDaysCourse = countDays + arrayStudyItems[1].days
-            button.setAttribute("onclick", null)
-            decrementTimer(".course_menu", arrayStudyItems[1].days)
-            
-            console.log("clicked")
+            if(checkBalance(arrayStudyItems[1].price, rocketLeague.uah)){
+                arrayStudyItems[1].isBought = arrayStudyItems[1].isBought === false
+                rocketLeague.uah -= arrayStudyItems[1].price;
+                tempDaysCourse = countDays + arrayStudyItems[1].days
+                button.setAttribute("onclick", null)
+                decrementTimer(".course_menu", arrayStudyItems[1].days)
+            } else {
+                openModal("myModalStudy","text__modalStudy", "Not enough money :c")
+            }
             break
         case "university_menu":
             arrayStudyItems[2].isBought = arrayStudyItems[2].isBought === false
             tempDaysUniversity = countDays + arrayStudyItems[2].days
             button.setAttribute("onclick", null)
             decrementTimer(".university_menu", arrayStudyItems[2].days)
-            break
-        default:
             break
     }
 }
