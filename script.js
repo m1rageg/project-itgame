@@ -39,7 +39,7 @@ class MainHero{
 let tempDaysCourse = 0
 let tempDaysUniversity = 0
 let tempDaysBook = 0
-let timeoutTimer = 100
+let timeoutTimer = 1000
 
 
 
@@ -575,5 +575,53 @@ function addStats(stats) {
     rocketLeague.health += stats.health || 0;
     rocketLeague.food += stats.food || 0;
     rocketLeague.happiness += stats.happiness || 0;
+    if(rocketLeague.health > 100){
+        rocketLeague.health = 100
+    }
+    if(rocketLeague.food > 100){
+        rocketLeague.food = 100
+    }
+    if(rocketLeague.happiness > 100){
+        rocketLeague.happiness = 100
+    }
     displayHeroStats(rocketLeague);
 }
+
+//func for death(end game)
+let countDatsWithoutFood = 0
+let countDatsWithoutHealth = 0
+let countDatsWithoutHappiness = 0
+function endGame(){
+    if(rocketLeague.food === 0){
+        countDatsWithoutFood += 1
+        if(countDatsWithoutFood > 4){
+            return showAlertAndReload()
+        }
+    } else {
+        countDatsWithoutFood = 0
+    }
+    if(rocketLeague.health === 0){
+        countDatsWithoutHealth += 1
+        if(countDatsWithoutHealth > 4){
+            return showAlertAndReload()
+        }
+    } else {
+        countDatsWithoutHealth = 0
+    }
+    if(rocketLeague.happiness === 0){
+        countDatsWithoutHappiness += 1
+        if(countDatsWithoutHappiness > 4){
+            return showAlertAndReload()
+        }
+    } else {
+        countDatsWithoutHappiness = 0
+    }
+}
+
+setInterval(endGame, timeoutTimer)
+
+function showAlertAndReload() {
+    alert("You are dead. Click 'OK' to restart the game.");
+    location.reload();
+  }
+  
