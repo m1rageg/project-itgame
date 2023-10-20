@@ -155,15 +155,15 @@ function increaseGameDate() {
         generateCurrency()
         displayExchangeRates()
     }
-    if(rocketLeague.food === 0){
-        alert(`WARNING, you have 0 food, you will die in ${5 - countDatsWithoutFood} days`)
-    }
-    if(rocketLeague.happiness === 0){
-        alert(`WARNING, you have 0 happiness, you will die in ${5 - countDatsWithoutHappiness} days`)
-    }
-    if(rocketLeague.health === 0){
-        alert(`WARNING, you have 0 health, you will die in ${5 - countDatsWithoutHealth} days`)
-    }
+    // if(rocketLeague.food === 0){
+    //     alert(`WARNING, you have 0 food, you will die in ${5 - countDatsWithoutFood} days`)
+    // }
+    // if(rocketLeague.happiness === 0){
+    //     alert(`WARNING, you have 0 happiness, you will die in ${5 - countDatsWithoutHappiness} days`)
+    // }
+    // if(rocketLeague.health === 0){
+    //     alert(`WARNING, you have 0 health, you will die in ${5 - countDatsWithoutHealth} days`)
+    // }
     addStats({food: -2, happiness: -4, health: -2})
     if(countDays % 30 === 0 && arrayHappinessItems[3].isMarried === true){
         rocketLeague.addHappiness(arrayHappinessItems[3].buffHappiness)
