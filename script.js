@@ -637,7 +637,10 @@ function endGame(){
 setInterval(endGame, timeoutTimer)
 
 function showAlertAndReload() {
-    alert("You are dead. Click 'OK' to restart the game.");
-    location.reload();
+    if(confirm("You are dead. Click 'OK' to restart the game.")){  
+        return window.location.reload()
+    }else{
+        alert('Good game, good luck!')
+    }
   }
   
