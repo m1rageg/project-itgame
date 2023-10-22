@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
 </head>
 <body>
-    
     <header>
         <div class="header__container">
             <div class="stats">
@@ -44,7 +43,7 @@
                 <div class="person__level">Current level: 1</div>
                 <div class="need__exp">0/1000</div>
             </div>
-            <div>
+            <div class="experience__meter__container">
                 <meter id="experience__meter" value="0" min="0" max="1000"></meter>       
             </div>
         </div>
@@ -53,12 +52,16 @@
     <main>
         <div id="character__syka" class="character__container">
             <div class="casino__button" onclick="changeMenuDisplay('casino__menu')">
-                <h2 class="casino__text">CASINO</h2>
+                <div class="bank__button_content">
+                    <h2 class="casino__text">CASINO</h2>
+                </div>
             </div>
             
             <img class="character__img" src="img/poorstudent.png" alt="character">
             <div class="bank__button" onclick="changeMenuDisplay('bank__menu')">
-                <h2 class="bank__text">BANK</h2>
+                <div class="bank__button_content">
+                    <h2 class="bank__text">BANK</h2>
+                </div>
             </div>
         </div>
         <div id="health__menu" class="no-display  menu__container">

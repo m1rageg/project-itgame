@@ -8,6 +8,7 @@ body {
     flex-direction: column;
     overflow: hidden;
     user-select: none;
+    background-color: aquamarine;
 }
     
 header {
@@ -16,10 +17,11 @@ header {
     flex-direction: column;
     width: 40%;
     margin: auto;
+    margin-bottom: 0;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 10px;
-    height: 175px;
+    height: 20vh;
 }
 
 main {
@@ -27,11 +29,15 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
     width: 40%;
-    height: 510px;
     margin: auto;
-    padding: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 30px;
+    padding-right: 30px;
     display: flex;
     justify-content: center;
+    height: 65vh;
+    position: relative;
 }
 
 footer {
@@ -40,10 +46,13 @@ footer {
     flex-direction: row;
     width: 40%;
     margin: auto;
+    margin-top: 0;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 30px;
     justify-content: space-between;
+    height: 20vh;
+    z-index: 1;
 }
 
 .action__container {
@@ -52,6 +61,10 @@ footer {
     font-weight: bold;
     text-align: center;
     width: 15%;
+    height: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    
 }
 
 .action__img {
@@ -70,24 +83,29 @@ footer {
 
 .character__img {
     margin: auto;
-    width: 470px;
-    height: 700px;
+    height: 100%;
+    position: absolute;
+    left: 30%;
+    bottom: -20%;
 }
 
 
 .header__container {
     display: flex;
+    height: 60%;
 }
 
 .stats {
     width: 100%;
+    height: 80%;
     display: flex;
     justify-content: space-between;
+    font-size: 1vw;
 }
 
 .stats__scales {
     width: 50%;
-    height: 100px;
+    height: 100%;
     display: flex;
     justify-content: space-around;
     padding-bottom: 0;
@@ -105,58 +123,80 @@ footer {
     background-color: #333;
     border-radius: 15%;
     width: 30%;
-    height: 80%;
-    padding: 10px 10px 0;
-    margin: 10px;
+    height: 100%;
+    padding: 2% 2% 0;
+    margin: 1%;
+    
 }
 
 .stats__img {
-    width: 40%;
-    height: 40%;
+    width: 80%;
+    height: 80%;
     background: none;
 }
 
-  .exp__container{
+.experience__container {
+    height: 38%;
+    font-size: 1vw;
+}
+
+
+
+.exp__container{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 15px;
-  }
-  .need__exp{
-    font-size: large;
+    height: 50%;
+}
+.need__exp{
     color: #333;
     font-weight: bold;
-  }
-  .person__level {
-    font-size: large;
+    height: 50%;
+    }
+.person__level {
     color: #333;
     margin-bottom: 10px;
     font-weight: bold;
-  }
+    height: 50%;
+}
   
-  #experience__meter {
+.experience__meter__container {
+    height: 50%;
+}
+
+#experience__meter {
     width: 100%;
-    height: 50px;
+    height: 100%;
     background-color: rgb(14, 170, 110);
     display: block;
-  }
-  
-  #experience__meter::-webkit-meter-bar {
-    background-color: white;
-    border: none;
-  }
-  
-  #experience__meter::-webkit-meter-optimum-value {
+}
+
+#experience__meter::-webkit-meter-bar {
+background-color: white;
+border: none;
+}
+
+#experience__meter::-webkit-meter-optimum-value {
     background-color: black;
-  }
+    transition: 1s width;
+}
 .stats__local-money{
-    font-size: 20px;
     color: #333;
     font-weight: bold;
     text-align: right;
+    animation: changeValue 0.5s;
 }
+
+@keyframes changeValue {
+  from {
+    content: '0';
+  }
+  to {
+    content: '1000';
+  }
+}
+
 .stats__dollars{
-    font-size: 20px;
     color: #333;
     margin-bottom: 20px;
     font-weight: bold;
@@ -164,7 +204,7 @@ footer {
 }
 #health__meter, #happiness__meter, #food__meter {
     width: 90%;
-    height: 50px;
+    height: 100px;
   }
 
   #health__meter::-webkit-meter-bar {
@@ -173,7 +213,9 @@ footer {
   }
 
   #health__meter::-webkit-meter-optimum-value {
-    background-color: red;}
+    background-color: red;
+    transition: 1s width
+}
       
 #food__meter::-webkit-meter-bar {
     background-color: white;
@@ -181,7 +223,8 @@ footer {
     }
 
 #food__meter::-webkit-meter-optimum-value {
-    background-color: green;}
+    background-color: green;
+    transition: 1s width;}
 
 #happiness__meter::-webkit-meter-bar {
     background-color: white;
@@ -189,10 +232,10 @@ footer {
     }
 
 #happiness__meter::-webkit-meter-optimum-value {
-    background-color: yellow;}
+    background-color: yellow;
+    transition: 1s width}
 
 .stats__balance{
-    font-size: large;
     color: #333;
     margin-top: 10px;
     font-weight: bold;
@@ -200,7 +243,7 @@ footer {
 .stats-divider {
     border-top: 3px dashed black;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 1%;
 }
 
 .no-display {
@@ -208,12 +251,14 @@ footer {
 }
 
 .menu__container {
-    width: 95%;
-    height: 95%;
     backdrop-filter: blur(15px);
     border-radius: 5%;
-    padding: 10px;
+    padding: 1%;
     border:  2px #333 solid;
+    width: 80%;
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
 }
 
 .menu__container > ul {
@@ -228,7 +273,7 @@ footer {
     border-radius: 15px;
 }
 .count__days{
-    font-size: large;
+    /* font-size: large; */
     color: #333;
     margin-top: 10px;
     font-weight: bold;
@@ -262,8 +307,12 @@ footer {
     right: -15px;
     cursor: pointer;
     font-size: 34px;
+    transition: transform .2s;
 }
 
+.exit:hover{
+    transform: matrix(0, 1, 1, 0, 0, 0);
+}
 
 #study__items__li, 
 #work__items__li, 
@@ -305,9 +354,27 @@ footer {
     background-image: url(img/bank.png);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 120px;
-    width: 120px;
-    margin-bottom: 700px;
+    width: 20%;
+    padding-top: 20%;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    transition: transform .2s;
+    cursor: pointer;
+}
+.bank__button:hover{
+    transform: scale(1.08);
+}
+
+.bank__button_content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .bank_exchange__container {
@@ -317,10 +384,9 @@ footer {
 
 .bank__text, .casino__text{
     text-align: center;
-    margin-top: 50px;
+    margin-top: 50%;
     color: #22b943;
-    backdrop-filter: blur(2px);
-    font-size: 30px;
+    font-size: 1.5vw;
     text-shadow: 1px 1px 0 #000,
     -1px 1px 0 #000,
     1px -1px 0 #000,
@@ -362,13 +428,21 @@ footer {
     background-image: url(img/casino.png);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 150px;
-    width: 150px;
-    margin-bottom: 700px;
+    width: 25%;
+    padding-top: 25%;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    transition: transform .2s;
+    cursor: pointer;
+}
+.casino__button:hover{
+    transform: scale(1.08);
 }
 
 .casino__text {
     color: red;
+    margin-top: 16%;
 }
 
 .card__wrapper {
@@ -465,15 +539,16 @@ footer {
     height: 20px;
     background-color: #333;
 }
-
-.close::before {
-    transform: rotate(45deg);
-}
-
-.close::after {
-    transform: rotate(-45deg);
-}
-
+ 
 .close:hover {
     color: green;
+    transform: rotate(360deg);
+    transition-duration: 1000ms;
 }
+
+  
+.action__container:hover {
+    transform: translateY(-10px);
+}
+
+/* ADD ANIMATION FOR BALANCE NUMBERS */

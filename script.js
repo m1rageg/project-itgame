@@ -39,8 +39,7 @@ class MainHero{
 let tempDaysCourse = 0
 let tempDaysUniversity = 0
 let tempDaysBook = 0
-let timeoutTimer = 1000
-
+let timeoutTimer = 100
 
 
 let rocketLeague = new MainHero('Rocket League')
@@ -105,6 +104,7 @@ function renderExp(countExp){
     currentExp = tempExp
     personLevel.textContent = `Current level: ${currentLevel}`
     needExpDisplay.textContent = `${currentExp}/${needExp}`
+
 }
 
 // function to set character picture depending on hero role
@@ -164,7 +164,7 @@ function increaseGameDate() {
     // if(rocketLeague.health === 0){
     //     alert(`WARNING, you have 0 health, you will die in ${5 - countDatsWithoutHealth} days`)
     // }
-    addStats({food: -2, happiness: -4, health: -2})
+    // addStats({food: -2, happiness: -4, health: -2})
     if(countDays % 30 === 0 && arrayHappinessItems[3].isMarried === true){
         rocketLeague.addHappiness(arrayHappinessItems[3].buffHappiness)
         rocketLeague.addFood(arrayHappinessItems[3].buffFood)
@@ -643,4 +643,5 @@ function showAlertAndReload() {
         alert('Good game, good luck!')
     }
   }
-  
+
+
