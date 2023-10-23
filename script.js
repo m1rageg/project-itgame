@@ -131,7 +131,7 @@ function setBar (id, value) {
 const personLevel = document.querySelector(".person__level")
 
 //stats exp
-let currentLevel = 29
+let currentLevel = 39
 let currentExp = 0
 let needExp = 1000
 function renderExp(countExp){
