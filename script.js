@@ -650,7 +650,7 @@ let countDatsWithoutHappiness = 0
 function endGame(){
     if(rocketLeague.food === 0){
         countDatsWithoutFood += 1
-        if(countDatsWithoutFood > 4){
+        if(countDatsWithoutFood === 5){
             return showAlertAndReload()
         }
     } else {
@@ -658,7 +658,7 @@ function endGame(){
     }
     if(rocketLeague.health === 0){
         countDatsWithoutHealth += 1
-        if(countDatsWithoutHealth > 4){
+        if(countDatsWithoutHealth === 5){
             return showAlertAndReload()
         }
     } else {
@@ -666,7 +666,7 @@ function endGame(){
     }
     if(rocketLeague.happiness === 0){
         countDatsWithoutHappiness += 1
-        if(countDatsWithoutHappiness > 4){
+        if(countDatsWithoutHappiness === 5){
             return showAlertAndReload()
         }
     } else {
