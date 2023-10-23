@@ -43,17 +43,57 @@ let timeoutTimer = 100
 
 
 let rocketLeague = new MainHero('Rocket League')
+const statsUsd = document.getElementById("stats__dollars")
+const statsUah = document.getElementById("stats__local-money")
+
 
 function displayHeroStats (hero) {
     setBar ("health", hero.health)
     setBar ("happiness", hero.happiness)
     setBar ("food", hero.food)
     setBar("experience", currentExp)
-    const statsUsd = document.getElementById("stats__dollars")
-    const statsUah = document.getElementById("stats__local-money")
     statsUsd.innerText = `${hero.usd.toFixed(2)} $`
     statsUah.innerHTML = `${hero.uah.toFixed(2)} &#8372;`
 }
+
+function animateBalance(purchaseAmount, currency) {
+    let duration = 600
+    let startValue;
+    if (currency === "UAH"){
+        startValue = rocketLeague.uah
+    } else {
+        startValue = rocketLeague.usd
+    }
+    
+    console.log(startValue)
+    const endValue = startValue + purchaseAmount;
+    let startTime;
+    
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      let progress = (timestamp - startTime) / duration;
+      if (progress > 1) progress = 1;
+      const value = startValue - (startValue - endValue) * progress;
+      
+      if (currency === "UAH"){
+        statsUah.innerHTML = `${value.toFixed(2)} &#8372;`
+      } else {
+        statsUsd.innerHTML = `${value.toFixed(2)} $`
+    }  
+
+      
+    
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    if (currency === "UAH"){
+        rocketLeague.uah = endValue
+    } else {
+        rocketLeague.usd = endValue
+    }
+    requestAnimationFrame(step);
+  }
 
 // array with hero roles matching bottom levels
 arrayOfMainHeroes = [
@@ -91,7 +131,7 @@ function setBar (id, value) {
 const personLevel = document.querySelector(".person__level")
 
 //stats exp
-let currentLevel = 9
+let currentLevel = 29
 let currentExp = 0
 let needExp = 1000
 function renderExp(countExp){
@@ -168,15 +208,15 @@ function increaseGameDate() {
     if(countDays % 30 === 0 && arrayHappinessItems[3].isMarried === true){
         rocketLeague.addHappiness(arrayHappinessItems[3].buffHappiness)
         rocketLeague.addFood(arrayHappinessItems[3].buffFood)
-        rocketLeague.uah -= arrayHappinessItems[3].price
+        animateBalance(arrayHappinessItems[3].price, "UAH")
     }
     if(countDays % 30 === 0 && arrayHealthItems[5].isHired === true){
         rocketLeague.addHealth(arrayHealthItems[5].buffHealth)
-        rocketLeague.uah -= arrayHealthItems[5].price
+        animateBalance(arrayHealthItems[5].price, "UAH")
     }
     if(countDays % 30 === 0 && arrayFoodItems[3].isHired === true){
         rocketLeague.addFood(arrayFoodItems[3].buffFood)
-        rocketLeague.uah -= arrayFoodItems[3].price
+        animateBalance(arrayFoodItems[3].price, "UAH")
     }
     if (arrayStudyItems[1].isBought === true && tempDaysCourse === countDays){
         renderExp(arrayStudyItems[1].exp);
@@ -242,11 +282,11 @@ function currencyExchangeRate (value, currency) {
 function completeExchange (value, currency, person) {
     const exchangedSum = currencyExchangeRate(value, currency)
     if (currency === "USD") {
-        person.usd -= +value
-        person.uah += exchangedSum
+        animateBalance(-Number(value), "USD")
+        animateBalance(exchangedSum, "UAH")
     } else if (currency === "UAH") {
-        person.usd += +value
-        person.uah -= exchangedSum
+        animateBalance(Number(value), "USD")
+        animateBalance(-exchangedSum, "UAH")
     } else {
         console.log(currency)
         console.log("ERROR")
@@ -303,7 +343,7 @@ function happinessItem(button){
         case 'cake_menu':
             if(checkBalance(arrayHappinessItems[2].price, rocketLeague.uah)){
                 addStats({happiness : arrayHappinessItems[2].buffFood, food: arrayHappinessItems[2].buffFood})
-                rocketLeague.uah -= arrayHappinessItems[2].price
+                animateBalance(arrayHappinessItems[2].price, "UAH")
             } else {
                 openModal("myModalHappiness","text__modalHappiness", "Not enough money :c")
             }
@@ -341,7 +381,7 @@ function healthItem(button){
         case 'doctor_menu':
             if(checkBalance(arrayHealthItems[2].price, rocketLeague.uah)){
                 addStats({happiness : arrayHealthItems[2].buffHappiness, health: arrayHealthItems[2].buffHealth})
-                rocketLeague.uah -= arrayHealthItems[2].price
+                animateBalance(arrayHealthItems[2].price, "UAH")
             } else {
                 openModal("myModalHealth","text__modalHealth", "Not enough money :c")
             }
@@ -349,7 +389,7 @@ function healthItem(button){
         case 'hospital_menu':
             if(checkBalance(arrayHealthItems[3].price, rocketLeague.uah)){
                 addStats({food : arrayHealthItems[3].buffFood, health: arrayHealthItems[3].buffHealth})
-                rocketLeague.uah -= arrayHealthItems[3].price
+                animateBalance(arrayHealthItems[3].price, "UAH")
             } else {
                 openModal("myModalHealth","text__modalHealth", "Not enough money :c")
             }
@@ -357,7 +397,7 @@ function healthItem(button){
         case 'abroad_menu':
             if(checkBalance(arrayHealthItems[4].price, rocketLeague.usd)){
                 addStats({health: arrayHealthItems[4].buffHealth})
-                rocketLeague.usd -= arrayHealthItems[4].price
+                animateBalance(arrayHealthItems[4].price, "USD")
             } else {
                 openModal("myModalHealth","text__modalHealth", "Not enough money :c")
             }
@@ -381,7 +421,7 @@ function foodItem(button){
         case 'fastfood_menu':
             if(checkBalance(arrayFoodItems[1].price, rocketLeague.uah)){
                 addStats({food : arrayFoodItems[1].buffFood, health: arrayFoodItems[1].buffHealth})
-                rocketLeague.uah -= arrayFoodItems[1].price
+                animateBalance(arrayFoodItems[1].price, "UAH")
             } else {
                 openModal("myModalFood","text__modalFood", "Not enough money :c")
             }
@@ -390,7 +430,7 @@ function foodItem(button){
         case 'restaurant_menu':
             if(checkBalance(arrayFoodItems[2].price, rocketLeague.uah)){
                 addStats({food : arrayFoodItems[2].buffFood})
-                rocketLeague.uah -= arrayFoodItems[2].price
+                animateBalance(arrayFoodItems[2].price, "UAH")
             } else {
                 openModal("myModalFood","text__modalFood", "Not enough money :c")
             }
@@ -424,7 +464,7 @@ function studyItem(button){
         case "course_menu":
             if(checkBalance(arrayStudyItems[1].price, rocketLeague.uah)){
                 arrayStudyItems[1].isBought = arrayStudyItems[1].isBought === false
-                rocketLeague.uah -= arrayStudyItems[1].price;
+                animateBalance(arrayStudyItems[1].price, "UAH")
                 tempDaysCourse = countDays + arrayStudyItems[1].days
                 button.setAttribute("onclick", null)
                 decrementTimer(".course_menu", arrayStudyItems[1].days)
@@ -546,9 +586,9 @@ function calculateSalary(array) {
       if (item.isWorking && countDays % 30 === 0) {
         renderExp(exp);
           if (item.currency === "usd") {
-            rocketLeague.usd += salary
+            animateBalance(salary, "USD")
           } else if (item.currency === "uah") {
-            rocketLeague.uah += salary
+            animateBalance(salary, "UAH")
           }
         }
     }
@@ -643,5 +683,3 @@ function showAlertAndReload() {
         alert('Good game, good luck!')
     }
   }
-
-
