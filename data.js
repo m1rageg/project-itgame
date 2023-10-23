@@ -9,7 +9,7 @@ let arrayStudyItems = [
     },
     {
         name: "course",
-        price: 7000,
+        price: -7000,
         exp: 1500,
         days: 90,
         isBought: false
@@ -27,7 +27,7 @@ let arrayStudyItems = [
 const arrayOfRandomItems = [
     {
         name: "Gym workout",
-        price: 10,
+        price: -10,
         currency: "USD",
         buff: 15,
         category: "health",
@@ -53,7 +53,7 @@ let arrayHappinessItems = [
     },
     {
         name: "cake",
-        price: 100,
+        price: -100,
         buffHappiness: 20,
         isMonthly: false,
         buffFood: 10, 
@@ -61,7 +61,7 @@ let arrayHappinessItems = [
     },
     {
         name: "marry",
-        price: 10000,
+        price: -10000,
         buffHappiness: 70,
         isMonthly: true,
         isMarried: false,
@@ -89,7 +89,7 @@ let arrayHealthItems = [
     },
     {
         name: "doctor",
-        price: 1000,
+        price: -1000,
         buffHealth: 25,
         buffHappiness: -5,
         buffFood: 0,
@@ -97,7 +97,7 @@ let arrayHealthItems = [
     },
     {
         name: "hospital",
-        price: 4000,
+        price: -4000,
         buffHealth: 50,
         buffHappiness: 0,
         buffFood: -15,
@@ -105,7 +105,7 @@ let arrayHealthItems = [
     },
     {
         name: "abroad",
-        price: 4000,
+        price: -4000,
         currency: "usd",
         buffHealth: 100,
         buffHappiness: 0,
@@ -114,7 +114,7 @@ let arrayHealthItems = [
     },
     {
         name: "personaldoctor",
-        price: 25000,
+        price: -25000,
         currency: "uah", 
         buffHealth: 70,
         buffHappiness: 0,
@@ -136,7 +136,7 @@ let arrayFoodItems = [
     },
     {
         name: "fastfood",
-        price: 300,
+        price: -300,
         buffHealth: -10,
         buffHappiness: 0,
         buffFood: 30,
@@ -144,7 +144,7 @@ let arrayFoodItems = [
     },
     {
         name: "restaurant",
-        price: 1000,
+        price: -1000,
         buffHealth: 0,
         buffHappiness: 0,
         buffFood: 40,
@@ -152,7 +152,7 @@ let arrayFoodItems = [
     },
     {
         name: "personalchef",
-        price: 20000,
+        price: -20000,
         buffHealth: 0,
         buffHappiness: 0,
         buffFood: 100,
@@ -161,7 +161,7 @@ let arrayFoodItems = [
     },
     {
         name: "marry",
-        price: 10000,
+        price: -10000,
         buffHealth: 0,
         buffHappiness: 70,
         buffFood: 70,
