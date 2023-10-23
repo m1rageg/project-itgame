@@ -16,11 +16,8 @@ header {
     display: flex;
     flex-direction: column;
     width: 40%;
-    margin: auto;
-    margin-bottom: 0;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 10px;
+    margin: auto auto 0;
+    padding: 0 30px 10px;
     height: 20vh;
 }
 
@@ -29,14 +26,11 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
     width: 40%;
-    margin: auto;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 30px;
-    padding-right: 30px;
+    margin: 0 auto;
+    padding: 0 30px;
     display: flex;
     justify-content: center;
-    height: 65vh;
+    height: 60vh;
     position: relative;
 }
 
@@ -45,18 +39,15 @@ footer {
     display: flex;
     flex-direction: row;
     width: 40%;
-    margin: auto;
-    margin-top: 0;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 30px;
+    margin: 0 auto auto;
+    padding: 30px 30px 0;
     justify-content: space-between;
     height: 20vh;
     z-index: 1;
 }
 
 .action__container {
-    font-size: large;
+    font-size: 1vw;
     color: #333;
     font-weight: bold;
     text-align: center;
@@ -64,13 +55,12 @@ footer {
     height: 100%;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
-    
 }
 
 .action__img {
     width: 89%;
     background-color: #333;
-    padding: 5px;
+    padding: 8%;
     border-radius: 15%;
 }
 
@@ -263,33 +253,30 @@ border: none;
 
 .menu__container > ul {
     padding: 0;
-    margin: 1% 1% -5px;
+    margin: 1% 1% 0;
 }
 
 .menu__container > ul > li {
-    background-color: #007BFF;
-    margin: 3px;
+    display: flex;
+    flex-direction: column;
+    margin: 1%;
     list-style-type: none;
-    border-radius: 15px;
+
 }
 .count__days{
     color: #333;
     margin-top: 10px;
     font-weight: bold;
 }
-#health__items__li li button , 
-#happiness__items__li li button, 
-#food__items__li li button, 
-#work__items__li li button, 
-#study__items__li li button {
+.menu__container > ul > li > button {
     background-color: #007BFF;
     color: white;
-    padding: 8px 16px;
+    padding: 2% 4%;
     border: none;
     cursor: pointer;
-    margin: 5px;
+    margin: 0;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 0.7vw;
     width: 98%;
 }
 
@@ -302,10 +289,10 @@ border: none;
 }
 .exit{
     position: absolute;
-    top: -15px;
-    right: -15px;
+    top: -3%;
+    right: -3%;
     cursor: pointer;
-    font-size: 34px;
+    font-size: 1.5vw;
     transition: transform .2s;
 }
 
@@ -446,27 +433,20 @@ border: none;
 
 .card__wrapper {
     width: 90%;
-    height: 80%;
+    height: 60%;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
     background: #55aa55;
     border-radius: 6px;
-    padding: 10px;
+    padding: 3%;
     margin: auto;
 }
 
-
-#casino__bet__button {
-    width: 200px;
-    height: 40px;
-    border-radius: 10px;
-}
-
 .card {
-    width: 100px;
-    height: 150px;
+    width: 25%;
+    height: 85%;
     border-radius: 6px;
     background: white;
     padding: 5px;
@@ -474,12 +454,15 @@ border: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 3px 6px; }
+    margin: 3px 6px;
+}
 .card--person .person {
-    height: 50px; }
+    height: 33%; }
 .card__info {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    height: 10%;
+}
 .card__info:last-of-type {
     justify-content: flex-end; }
 .card__info img {
@@ -488,18 +471,64 @@ border: none;
 .card {
     font-family: "Nerko One", cursive;
     color: #353c4d;
-    font-size: 20px; }
+    font-size: 1.7vw; }
 .card svg, .card img {
-    height: 15px; }
+    width: 15%; }
 
 #casino__card__info {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-around;
     background-color: white;
     width: 50%;
-    margin: 5px auto auto;
+    height: 10%;
+    margin: 1% auto auto;
     border-radius: 6px;
+    font-size: 1vw;
+}
+
+#casino__card__info > p {
+    margin: auto;
+}
+
+.casino__bet__container {
+    height: 20%;
+    margin: 1% auto auto;
+    font-size: 1vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.color__choice {
+    background-color: #333333;
+    color: #f1f1f1;
+    padding: 1%;
+    border-radius: 10px;
+    width: 14%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.color__choice > input[type="radio"] {
+    -ms-transform: scale(50%); /* IE 9 */
+    -webkit-transform: scale(50%); /* Chrome, Safari, Opera */
+    transform: scale(50%);
+    margin: 0;
+}
+
+#inputBetValue {
+    border-radius: 10px;
+    height: 40%;
+    width: 30%;
+}
+
+#casino__bet__button {
+    width: 30%;
+    height: 50%;
+    border-radius: 10px;
+    font-size: 1vw;
 }
 
 .modal {
@@ -526,7 +555,7 @@ border: none;
 
 .close {
     position: absolute;
-    top: 0px;
+    top: 0;
     right: 10px;
     cursor: pointer;
     font-size: 24px;

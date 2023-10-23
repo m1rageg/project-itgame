@@ -196,10 +196,14 @@
                 <p id="casino__card__info__color"></p>
             </div>
             <div class="casino__bet__container">
-                <label for="colorChoiceRed">Red</label>
-                <input id="colorChoiceRed" type="radio" name="colorChoice" value="red">
-                <label for="colorChoiceBlack">Black</label>
-                <input id="colorChoiceBlack" type="radio" name="colorChoice" value="black">
+                <div class="color__choice">
+                    <label for="colorChoiceRed">Red</label>
+                    <input id="colorChoiceRed" type="radio" name="colorChoice" value="red">
+                </div>
+                <div class="color__choice">
+                    <label for="colorChoiceBlack">Black</label>
+                    <input id="colorChoiceBlack" type="radio" name="colorChoice" value="black">
+                </div>
                 <label for="inputBetValue"></label>
                 <input id="inputBetValue" type="number" min="100" value="100" step="100">
                 <button id="casino__bet__button" type="submit">Place a bet</button>
