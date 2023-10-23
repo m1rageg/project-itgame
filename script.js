@@ -3,12 +3,12 @@
 class MainHero{
     constructor(name,){
         this.name = name;
-        this.health = 50;
-        this.happiness = 50;
-        this.food = 50;
+        this.health = 100;
+        this.happiness = 100;
+        this.food = 100;
         this.exp = null;
-        this.usd = 10000
-        this.uah = 10000
+        this.usd = 0
+        this.uah = 1000
     }
     addHealth(value){
         this.health += value
@@ -125,7 +125,7 @@ function setBar (id, value) {
 const personLevel = document.querySelector(".person__level")
 
 //stats exp
-let currentLevel = 39
+let currentLevel = 0
 let currentExp = 0
 let needExp = 1000
 function renderExp(countExp){
