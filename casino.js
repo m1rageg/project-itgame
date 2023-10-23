@@ -123,9 +123,9 @@ function makeBet(event) {
             randomCard = getRandomCard()
             console.log(currentBetOption, randomCard.color)
             if (currentBetOption === randomCard.color) {
-                rocketLeague.uah += betValue
+                animateBalance(betValue, "UAH")
             } else {
-                rocketLeague.uah -= betValue
+                animateBalance(-betValue, "UAH")
             }
         }
         displayCard(randomCard)

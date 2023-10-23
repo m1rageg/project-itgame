@@ -231,7 +231,7 @@ function increaseGameDate() {
         arrayStudyItems[2].isBought = false
         arrayWorkItems[4].conditions.universityEnd = true
         document.querySelector(".university_menu").setAttribute("onclick", "studyItem(this)")
-        document.querySelector(".course_menu").innerHTML = "University(+5000exp, 1095 days)"
+        document.querySelector(".university_menu").innerHTML = "University(+5000exp, 1095 days)"
     }
     if (arrayStudyItems[0].isBought === true && tempDaysBook === countDays){
         renderExp(arrayStudyItems[0].exp);
