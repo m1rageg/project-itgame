@@ -30,16 +30,10 @@ class MainHero{
     }
 }
 
-// const bodyElem = document.body
-// bodyElem.style.cursor = "default"
-// bodyElem.addEventListener('selectstart', (event) => {
-//     event.preventDefault();
-// })
-
 let tempDaysCourse = 0
 let tempDaysUniversity = 0
 let tempDaysBook = 0
-let timeoutTimer = 100
+let timeoutTimer = 2000
 
 
 let rocketLeague = new MainHero('Rocket League')
@@ -195,16 +189,7 @@ function increaseGameDate() {
         generateCurrency()
         displayExchangeRates()
     }
-    // if(rocketLeague.food === 0){
-    //     alert(`WARNING, you have 0 food, you will die in ${5 - countDatsWithoutFood} days`)
-    // }
-    // if(rocketLeague.happiness === 0){
-    //     alert(`WARNING, you have 0 happiness, you will die in ${5 - countDatsWithoutHappiness} days`)
-    // }
-    // if(rocketLeague.health === 0){
-    //     alert(`WARNING, you have 0 health, you will die in ${5 - countDatsWithoutHealth} days`)
-    // }
-    // addStats({food: -2, happiness: -4, health: -2})
+    addStats({food: -2, happiness: -4, health: -2})
     if(countDays % 30 === 0 && arrayHappinessItems[3].isMarried === true){
         rocketLeague.addHappiness(arrayHappinessItems[3].buffHappiness)
         rocketLeague.addFood(arrayHappinessItems[3].buffFood)
