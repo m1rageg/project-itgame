@@ -24,17 +24,57 @@ let arrayStudyItems = [
 ]
 
 // NEED TO ADD MORE
-const arrayOfRandomItems = [
+let arrayOfRandomItemsHealth = [
     {
         name: "Gym workout",
-        price: -10,
-        currency: "USD",
-        buff: 15,
-        category: "health",
-        isMonthly: false,
-        isAvailable: true
+        price: -2000,
+        buffHealth: 30,
+        buffHappiness: 10,
+        buffFood: 0,
+        isMonthly: true,
+        daysRequired: 150,
+        isAvailable: false
+    },
+    {
+        name: "Psychologist",
+        price: -1200,
+        buffHealth: 20,
+        buffHappiness: 25,
+        daysRequired: 250,
+        isAvailable: false
     }
 ]
+
+let arrayOfRAndomItemsHappiness = [
+    {
+        name: "vacation",
+        price: -8000,
+        buffHappiness: 70,
+        buffHealth: 0,
+        buffFood: 0,
+        daysRequired: 250,
+        isAvailable: false
+    },
+    {
+        name: "citymall",
+        price: -2000,
+        buffHappiness: 35,
+        buffHealth: 0,
+        buffFood: 15,
+        daysRequired: 365,
+        isAvailable: false
+    },
+    {
+        name: "zoo",
+        price: 0,
+        buffFood: -15,
+        buffHealth: 0,
+        buffHappiness: 25,
+        daysRequired: 450,
+        isAvailable: false
+    }
+]
+
 
 let arrayHappinessItems = [
     {

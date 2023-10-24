@@ -3,9 +3,9 @@
 class MainHero{
     constructor(name,){
         this.name = name;
-        this.health = 100;
-        this.happiness = 100;
-        this.food = 100;
+        this.health = 10;
+        this.happiness = 10;
+        this.food = 10;
         this.exp = null;
         this.usd = 0
         this.uah = 1000
@@ -33,7 +33,7 @@ class MainHero{
 let tempDaysCourse = 0
 let tempDaysUniversity = 0
 let tempDaysBook = 0
-let timeoutTimer = 2000
+let timeoutTimer = 100
 
 
 let rocketLeague = new MainHero('Rocket League')
@@ -138,7 +138,6 @@ function renderExp(countExp){
     currentExp = tempExp
     personLevel.textContent = `Current level: ${currentLevel}`
     needExpDisplay.textContent = `${currentExp}/${needExp}`
-
 }
 
 // function to set character picture depending on hero role
@@ -189,7 +188,7 @@ function increaseGameDate() {
         generateCurrency()
         displayExchangeRates()
     }
-    addStats({food: -2, happiness: -4, health: -2})
+    
     if(countDays % 30 === 0 && arrayHappinessItems[3].isMarried === true){
         rocketLeague.addHappiness(arrayHappinessItems[3].buffHappiness)
         rocketLeague.addFood(arrayHappinessItems[3].buffFood)
@@ -226,10 +225,12 @@ function increaseGameDate() {
         
     }
     personLevel.innerHTML = `Current level: ${currentLevel}`
+    // addStats({food: -2, happiness: -4, health: -2})
     calculateSalary(arrayWorkItems)
     displayHeroStats(rocketLeague)
     renderImg(currentLevel)
     setTimeout(increaseGameDate, timeoutTimer)
+    apearenceRandomitems(arrayOfRAndomItemsHappiness, "happiness")
 }
 increaseGameDate()
 //end function for changing date
@@ -338,6 +339,25 @@ function happinessItem(button){
             arrayHappinessItems[3].isMarried = arrayHappinessItems[3].isMarried === false
             arrayFoodItems[4].isMarried = arrayFoodItems[4].isMarried === false
             updateMarryButton()
+            break;
+        case 'vacation_menu':
+            if(checkBalance(-arrayOfRAndomItemsHappiness[0].price, rocketLeague.uah)){
+                addStats({happiness: arrayOfRAndomItemsHappiness[0].buffHappiness})
+                animateBalance(arrayOfRAndomItemsHappiness[0].price, "UAH")
+            } else {
+                openModal("myModalHappiness","text__modalHappiness", "Not enough money :c")
+            }
+            break;
+        case 'citymall_menu':
+            if(checkBalance(-arrayOfRAndomItemsHappiness[1].price, rocketLeague.uah)){
+                addStats({happiness: arrayOfRAndomItemsHappiness[1].buffHappiness, food: arrayOfRAndomItemsHappiness[1].buffFood})
+                animateBalance(arrayOfRAndomItemsHappiness[1].price, "UAH")
+            } else {
+                openModal("myModalHappiness","text__modalHappiness", "Not enough money :c")
+            }
+            break;
+        case 'zoo_menu':
+            addStats({happiness: arrayOfRAndomItemsHappiness[2].buffHappiness, food: arrayOfRAndomItemsHappiness[2].buffFood})
             break;
         default:
             console.log('unknown')
@@ -668,3 +688,66 @@ function showAlertAndReload() {
         alert('Good game, good luck!')
     }
   }
+
+function genereteRandomNumber(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+function apearenceRandomitems(arr, category){
+    let temp = document.getElementById(`${category}__items__li`)
+    arr.forEach((item) =>{
+        if(countDays >= item.daysRequired){
+            let randomNumber = genereteRandomNumber(item.daysRequired, item.daysRequired * 2)
+            if(randomNumber === countDays && !item.isAvailable){
+                item.isAvailable = true
+                alert(`Congratulations, ${item.name} is available in your city!`)
+
+                const listItem = document.createElement('li');
+                const button = document.createElement('button');
+                let checkHapp = true ? item.buffHappiness !== 0 : false;
+                let checkHealth = true ? item.buffHealth !== 0 : false;
+                let checkFood = true ? item.buffFood !== 0 : false;
+                let outText = `${item.name[0].toUpperCase() + item.name.slice(1)} (`;
+
+                if (checkHapp && item.buffHappiness > 0) {
+                    outText += `+${item.buffHappiness} &#128525`;
+                } else if(checkHapp && item.buffHappiness < 0){
+                    outText += `, -${item.buffHappiness} &#128525`;
+                }
+
+                if (checkHealth && item.buffHealth > 0) {
+                    if (checkHapp) {
+                        outText += ', ';
+                    }
+                    outText += `${item.buffHealth}❤️`;
+                } else if (checkHealth && item.buffHealth < 0){
+                    outText += `, -${item.buffHealth} ❤️`;
+                }
+
+                if (checkFood && item.buffFood > 0) {
+                    if (checkHapp || checkHealth) {
+                        outText += ', ';
+                    }
+                    outText += `+${item.buffFood}🍔`;
+                } else if (checkFood && item.buffFood < 0){
+                    outText += `, ${item.buffFood} 🍔`;
+                }
+                if (item.price < 0) {
+                    outText += `, ${item.price} &#8372`
+                }
+
+                outText += ')';
+                button.innerHTML = outText;
+                button.className = `${item.name}_menu`;
+                button.onclick = function() {
+                    happinessItem(this);
+                };
+
+                listItem.appendChild(button);
+
+                temp.appendChild(listItem);
+            }
+        }
+    })
+}
