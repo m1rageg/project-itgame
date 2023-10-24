@@ -231,6 +231,7 @@ function increaseGameDate() {
     renderImg(currentLevel)
     setTimeout(increaseGameDate, timeoutTimer)
     apearenceRandomitems(arrayOfRAndomItemsHappiness, "happiness")
+    apearenceRandomitems(arrayOfRandomItemsHealth, "health")
 }
 increaseGameDate()
 //end function for changing date
@@ -411,6 +412,14 @@ function healthItem(button){
             button.innerHTML = arrayHealthItems[5].isHired === false ? "The doctor is already hired!"  : "Hire a personal doctor(+70&#10084; every month, -25000&#8372 every month)"
             arrayHealthItems[5].isHired = arrayHealthItems[5].isHired === false
             break;
+        case 'psychologist_menu':
+            if(checkBalance(-arrayOfRandomItemsHealth[1].price, rocketLeague.uah)){
+                addStats({health: arrayOfRandomItemsHealth[1].buffHealth, happiness: arrayOfRandomItemsHealth[1].buffHappiness})
+                animateBalance(arrayOfRandomItemsHealth[1].price, "UAH")
+            } else {
+                openModal("myModalHealth","text__modalHealth", "Not enough money :c")
+            }
+            break;
         default:
             console.log('unknown')
         }
@@ -452,6 +461,7 @@ function foodItem(button){
             arrayHappinessItems[3].isMarried = arrayHappinessItems[3].isMarried === false
             updateMarryButton()
             break;
+        
         default:
             console.log('unknown')
     }
@@ -740,9 +750,20 @@ function apearenceRandomitems(arr, category){
                 outText += ')';
                 button.innerHTML = outText;
                 button.className = `${item.name}_menu`;
-                button.onclick = function() {
-                    happinessItem(this);
-                };
+                if(category === 'happiness'){
+                    button.onclick = function() {
+                        happinessItem(this);
+                    };
+                } else if (category === 'health'){
+                    button.onclick = function() {
+                        healthItem(this);
+                    };
+                }else if (category === 'food'){
+                    button.onclick = function() {
+                        foodItem(this);
+                    };
+                }
+                
 
                 listItem.appendChild(button);
 

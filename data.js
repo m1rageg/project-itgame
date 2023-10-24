@@ -26,21 +26,23 @@ let arrayStudyItems = [
 // NEED TO ADD MORE
 let arrayOfRandomItemsHealth = [
     {
-        name: "Gym workout",
+        name: "gym",
         price: -2000,
         buffHealth: 30,
         buffHappiness: 10,
         buffFood: 0,
         isMonthly: true,
-        daysRequired: 150,
-        isAvailable: false
+        daysRequired: 110,
+        isAvailable: false,
+        isBought: false
     },
     {
-        name: "Psychologist",
+        name: "psychologist",
         price: -1200,
         buffHealth: 20,
         buffHappiness: 25,
-        daysRequired: 250,
+        buffFood: 0,
+        daysRequired: 20,
         isAvailable: false
     }
 ]
