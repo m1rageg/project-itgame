@@ -32,7 +32,7 @@ let arrayOfRandomItemsHealth = [
         buffHappiness: 10,
         buffFood: 0,
         isMonthly: true,
-        daysRequired: 10,
+        daysRequired: 110,
         isAvailable: false,
         isBought: false
     },
@@ -42,7 +42,7 @@ let arrayOfRandomItemsHealth = [
         buffHealth: 20,
         buffHappiness: 25,
         buffFood: 0,
-        daysRequired: 20,
+        daysRequired: 190,
         isAvailable: false
     }
 ]
