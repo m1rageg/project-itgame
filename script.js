@@ -224,6 +224,10 @@ function increaseGameDate() {
         document.querySelector(".book_menu").innerHTML = "Read book(+300exp, 10 days)"
         
     }
+    if(arrayOfRandomItemsHealth[0].isBought === true && countDays % 30 === 0){
+        addStats({health: 30, happiness: 10})
+        animateBalance(arrayOfRandomItemsHealth[0].price, "UAH")
+    }
     personLevel.innerHTML = `Current level: ${currentLevel}`
     // addStats({food: -2, happiness: -4, health: -2})
     calculateSalary(arrayWorkItems)
@@ -420,6 +424,9 @@ function healthItem(button){
                 openModal("myModalHealth","text__modalHealth", "Not enough money :c")
             }
             break;
+        case 'gym_menu':
+            button.innerHTML = arrayOfRandomItemsHealth[0].isBought === false ? "Gym subscription is already bought"  : "Buy a subscription(+30&#10084; every month, +10&#128525; every month, -2000&#8372 every month)"
+            arrayOfRandomItemsHealth[0].isBought = arrayOfRandomItemsHealth[0].isBought === false
         default:
             console.log('unknown')
         }
