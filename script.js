@@ -230,6 +230,7 @@ function increaseGameDate() {
     }
     personLevel.innerHTML = `Current level: ${currentLevel}`
     // addStats({food: -2, happiness: -4, health: -2})
+    apearenceRandomEvents(arrayOfRandomEvents)
     calculateSalary(arrayWorkItems)
     displayHeroStats(rocketLeague)
     renderImg(currentLevel)
@@ -775,6 +776,24 @@ function apearenceRandomitems(arr, category){
                 listItem.appendChild(button);
 
                 temp.appendChild(listItem);
+            }
+        }
+    })
+}
+
+function apearenceRandomEvents(arr){
+    arr.forEach((el) => {
+        if(!el.isHappened){
+            if((Math.floor(Math.random() * ((el.daysRequired * 2) - el.daysRequired + 1)) + el.daysRequired) - 2 === countDays){
+                if(el.type === "positive"){
+                    alert(`Congratulations! You ${el.name}.`)
+                    animateBalance(el.money, "UAH")
+                    el.isHappened = true
+                } else {
+                    alert(`OH sad! Your ${el.name}.`)
+                    animateBalance(el.money, "UAH")
+                    el.isHappened = true
+                }
             }
         }
     })
