@@ -3,9 +3,9 @@
 class MainHero{
     constructor(name,){
         this.name = name;
-        this.health = 10;
-        this.happiness = 10;
-        this.food = 10;
+        this.health = 100;
+        this.happiness = 100;
+        this.food = 100;
         this.exp = null;
         this.usd = 0
         this.uah = 1000
@@ -33,7 +33,7 @@ class MainHero{
 let tempDaysCourse = 0
 let tempDaysUniversity = 0
 let tempDaysBook = 0
-let timeoutTimer = 100
+let timeoutTimer = 1500
 
 
 let rocketLeague = new MainHero('Rocket League')
