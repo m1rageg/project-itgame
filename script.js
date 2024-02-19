@@ -230,7 +230,7 @@ function increaseGameDate() {
     }
     personLevel.innerHTML = `Current level: ${currentLevel}`
     // addStats({food: -2, happiness: -4, health: -2})
-    apearenceRandomEvents(arrayOfRandomEvents)
+    //apearenceRandomEvents(arrayOfRandomEvents)
     calculateSalary(arrayWorkItems)
     displayHeroStats(rocketLeague)
     renderImg(currentLevel)
