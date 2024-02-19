@@ -229,7 +229,7 @@ function increaseGameDate() {
         animateBalance(arrayOfRandomItemsHealth[0].price, "UAH")
     }
     personLevel.innerHTML = `Current level: ${currentLevel}`
-    // addStats({food: -2, happiness: -4, health: -2})
+    addStats({food: -2, happiness: -4, health: -2})
     //apearenceRandomEvents(arrayOfRandomEvents)
     calculateSalary(arrayWorkItems)
     displayHeroStats(rocketLeague)
